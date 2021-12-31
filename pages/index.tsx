@@ -12,9 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Modified Base for Creating Next.js Applications
-        </h1>
+        <h1 className={styles.title}>Video et Games</h1>
       </main>
 
       <footer className={styles.footer}>
