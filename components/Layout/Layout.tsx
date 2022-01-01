@@ -1,13 +1,14 @@
 import React, { FC } from "react"
-import Footer from "./Footer"
-import Navbar from "./Navbar"
+import Footer from "../Footer/Footer"
+import Header from "../Header/Header"
+import * as Styled from "./Layout.styles"
 
 interface LayoutProps {}
 
 const Layout: FC<LayoutProps> = ({ children }) => (
   <div className="layout">
-    <Navbar />
-    <div className="content">{children}</div>
+    <Header />
+    <Styled.Content>{children}</Styled.Content>
     <Footer />
   </div>
 )

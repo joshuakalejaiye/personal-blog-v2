@@ -1,11 +1,12 @@
 import React, { FC } from "react"
+import * as Styled from "./Footer.styles"
 
 interface FooterProps {}
 
 const Footer: FC<FooterProps> = () => (
-  <div>
+  <Styled.Footer>
     <p>Copyright 2022 - video et games</p>
-  </div>
+  </Styled.Footer>
 )
 
 export default Footer
