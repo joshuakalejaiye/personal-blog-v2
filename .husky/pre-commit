@@ -4,7 +4,7 @@
 echo '🏗️👷 Styling, testing and building your project before committing'
 
 # Format all files with prettier
-npm run format
+# npm run format
 
 # Check Prettier standards
 npm run check-format ||
