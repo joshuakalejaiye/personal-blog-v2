@@ -59,6 +59,7 @@ const Articles: FC<ArticlesProps> = () => {
       <h1>Articles</h1>
       {articles.map((article) => (
         <div
+          key={article.articleString}
           role="button"
           onClick={() => {
             router.push(`articles/${article.articleString}`)

@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { useQuery } from "react-query"
+import Image from "next/image"
 
 interface MediaScoreProps {
   mediaType: "MOVIE" | "TV" | "GAME"
@@ -36,25 +37,20 @@ interface MovieTvData {
 const fetchMovieTvData = async (mediaId: string): Promise<MovieTvData> =>
   (await fetch(`https://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
 
-// const fetchGameData = async (id: string): Promise<MovieTvData> => {}
+const fetchGameData = async (mediaId: string): Promise<MovieTvData> =>
+  (await fetch(`https://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
+
+const MovieTvLoader = (mediaId, height) =>
+  `https://img.omdbapi.com/?i=${mediaId}&h=${height}&apikey=85894d5b`
+
+const GameLoader = (mediaId, height) =>
+  `https://img.omdbapi.com/?i=${mediaId}&h=${height}&apikey=85894d5b`
 
 const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
-  let queryData
-  let imgSource
-
-  switch (mediaType) {
-    case "MOVIE":
-    case "TV":
-      imgSource = `https://img.omdbapi.com/?i=${mediaId}&apikey=85894d5b`
-      queryData = useQuery(["getDetails", mediaId], () =>
-        fetchMovieTvData(mediaId),
-      )
-      break
-    case "GAME":
-      break
-    default:
-      break
-  }
+  const imgLoader = mediaType === "GAME" ? GameLoader : MovieTvLoader
+  const fetchMedia = mediaType === "GAME" ? fetchGameData : fetchMovieTvData
+  const queryData = useQuery(["getDetails", mediaId], () => fetchMedia(mediaId))
+  const imageHeight = 1600
 
   const { data, status } = queryData
 
@@ -67,14 +63,19 @@ const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
       <div style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h2>{Title}</h2>
-          <img src={String(imgSource)} alt={`The poster for ${Title}`} />
+          <Image
+            src={imgLoader(mediaId, imageHeight)}
+            alt={`The poster for ${Title}`}
+            width="227"
+            height="430"
+          />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h4>Scores</h4>
           <div style={{ display: "flex", flexDirection: "column" }}>
             {Ratings &&
               Ratings.map((rating) => (
-                <div>
+                <div key={rating.Source}>
                   <h4>
                     {rating.Source === "Internet Movie Database"
                       ? "IMDB"
