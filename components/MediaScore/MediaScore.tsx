@@ -34,7 +34,7 @@ interface MovieTvData {
 }
 
 const fetchMovieTvData = async (mediaId: string): Promise<MovieTvData> =>
-  (await fetch(`http://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
+  (await fetch(`https://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
 
 // const fetchGameData = async (id: string): Promise<MovieTvData> => {}
 
@@ -45,7 +45,7 @@ const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
   switch (mediaType) {
     case "MOVIE":
     case "TV":
-      imgSource = `http://img.omdbapi.com/?i=${mediaId}&apikey=85894d5b`
+      imgSource = `https://img.omdbapi.com/?i=${mediaId}&apikey=85894d5b`
       queryData = useQuery(["getDetails", mediaId], () =>
         fetchMovieTvData(mediaId),
       )
