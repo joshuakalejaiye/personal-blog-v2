@@ -67,7 +67,7 @@ const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
             src={imgLoader(mediaId, imageHeight)}
             alt={`The poster for ${Title}`}
             width="227"
-            height="430"
+            height="345"
           />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
