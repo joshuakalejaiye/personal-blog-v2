@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState, useEffect } from "react"
 import { NextRouter, useRouter } from "next/router"
 import MediaScore from "../../components/MediaScore/MediaScore"
 
@@ -80,7 +80,11 @@ const getPageContent = (articleString: string) => {
 const Article: FC<ArticleProps> = () => {
   const router = useRouter()
   const articleString = router.query.id as string
-  const pageContent = getPageContent(articleString)
+  const [pageContent, setPageContent] = useState()
+
+  useEffect(() => {
+    setPageContent(getPageContent(articleString))
+  }, [articleString])
 
   if (pageContent) {
     const { title, subtitle, date, articleType, content, mediaId, mediaType } =
