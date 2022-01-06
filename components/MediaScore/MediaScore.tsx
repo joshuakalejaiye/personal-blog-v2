@@ -97,7 +97,7 @@ const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
   if (status === "error") {
     return (
       <div className="center">
-        We couldnt find this blog post{" "}
+        We couldnt get any data on the subject{" "}
         <span role="img" aria-label="sad">
           😢
         </span>

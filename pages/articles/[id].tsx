@@ -71,11 +71,9 @@ const dummyData = {
   } as ArticleData,
 }
 
-const getPageContent = (articleString: string) => {
-  console.log(dummyData[articleString])
+const getPageContent = (articleString: string) =>
   // fetch content based on articleString !!!!!
-  return dummyData[articleString]
-}
+  dummyData[articleString]
 
 const Article: FC<ArticleProps> = () => {
   const router = useRouter()
