@@ -17,6 +17,8 @@ module.exports = {
     "comma-dangle": "off",
     "react/react-in-jsx-scope": "off",
     "require-jsdoc": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react/jsx-filename-extension": [
       2,
       { extensions: [".js", ".jsx", ".ts", ".tsx"] },

@@ -1,87 +1,91 @@
 import React, { FC } from "react"
-import { useQuery } from "react-query"
 import Image from "next/image"
+import { NextRouter, useRouter } from "next/router"
 
-interface MediaScoreProps {
-  mediaType: "MOVIE" | "TV" | "GAME"
-  id: string
-}
+export type MediaType = "MOVIE" | "TV" | "GAME"
 
-interface MovieTvData {
-  Title: string
-  Year: string
-  Rated: string
-  Released: string
-  Runtime: string
-  Genre: string
-  Director: string
-  Writer: string
-  Actors: string
-  Plot: string
-  Language: string
-  Awards: string
-  Poster: string
-  Ratings: { Source: string; Value: string }[]
-  Metascore: string
+export interface MovieTvData {
+  title: string
+  year: string
+  rated: string
+  released: string
+  runtime: string
+  genre: string
+  director: string
+  writer: string
+  actors: string
+  plot: string
+  language: string
+  awards: string
+  poster: string
+  ratings: { source: string; value: string }[]
+  metascore: string
   imdbRating: string
   imdbVotes: string
   imdbID: string
-  Type: string
-  DVD: string
-  BoxOffice: string
-  Production: string
-  Website: string
-  Response: string
+  type: string
+  dvd: string
+  boxOffice: string
+  production: string
+  website: string
+  response: string
 }
 
-const fetchMovieTvData = async (mediaId: string): Promise<MovieTvData> =>
-  (await fetch(`https://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
+interface MediaScoreProps {
+  handleClick: (
+    mediaType: MediaType,
+    mediaId: string,
+    router: NextRouter,
+  ) => void
+  mediaDetails: {
+    mediaId: string
+    mediaType: MediaType
+    movieTvResponse: MovieTvData
+    gameResponse: {}
+  }
+}
 
-const fetchGameData = async (mediaId: string): Promise<MovieTvData> =>
-  (await fetch(`https://www.omdbapi.com/?i=${mediaId}&apikey=85894d5b`)).json()
+const MovieTvLoader = (movieTvResponse) => movieTvResponse.poster
 
-const MovieTvLoader = (mediaId, height) =>
-  `https://img.omdbapi.com/?i=${mediaId}&h=${height}&apikey=85894d5b`
+const MediaScore: FC<MediaScoreProps> = ({ handleClick, mediaDetails }) => {
+  const router = useRouter()
 
-const GameLoader = (mediaId, height) =>
-  `https://img.omdbapi.com/?i=${mediaId}&h=${height}&apikey=85894d5b`
-
-const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
-  const imgLoader = mediaType === "GAME" ? GameLoader : MovieTvLoader
-  const fetchMedia = mediaType === "GAME" ? fetchGameData : fetchMovieTvData
-  const queryData = useQuery(["getDetails", mediaId], () => fetchMedia(mediaId))
-  const imageHeight = 1600
-
-  const { data, status } = queryData
-
-  // use react query instead, find game database
-
-  if (status === "success") {
-    const { Title, Ratings } = data
+  if (mediaDetails.movieTvResponse) {
+    const { movieTvResponse, mediaId, mediaType } = mediaDetails
+    const { title, ratings } = movieTvResponse
 
     return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => handleClick(mediaType, mediaId, router)}
+        onKeyDown={() => handleClick(mediaType, mediaId, router)}
+        style={{ display: "flex", flexDirection: "row" }}
+      >
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>{Title}</h2>
-          <Image
-            src={imgLoader(mediaId, imageHeight)}
-            alt={`The poster for ${Title}`}
-            width="227"
-            height="345"
-          />
+          <h2>{title}</h2>
+          {movieTvResponse && (
+            <Image
+              src={MovieTvLoader(movieTvResponse)}
+              alt={`The poster for ${title}`}
+              width="227"
+              height="345"
+            />
+          )}
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h4>Scores</h4>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {Ratings &&
-              Ratings.map((rating) => (
-                <div key={rating.Source}>
+            {ratings &&
+              ratings.map((rating) => (
+                // console.log(rating)
+                <div key={rating.source}>
                   <h4>
-                    {rating.Source === "Internet Movie Database"
+                    {rating.source === "Internet Movie Database"
                       ? "IMDB"
-                      : rating.Source}
+                      : rating.source}
                   </h4>
-                  <div>{rating.Value}</div>
+                  <div>{rating.value}</div>
                 </div>
               ))}
           </div>
@@ -89,22 +93,7 @@ const MediaScore: FC<MediaScoreProps> = ({ mediaType, id: mediaId }) => {
       </div>
     )
   }
-
-  if (status === "loading") {
-    return <div className="center">Loading...</div>
-  }
-
-  if (status === "error") {
-    return (
-      <div className="center">
-        We couldnt get any data on the subject{" "}
-        <span role="img" aria-label="sad">
-          😢
-        </span>
-      </div>
-    )
-  }
-
+  //! !!! really bad for SEO do not leave this in production
   return <div />
 }
 
