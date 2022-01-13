@@ -1,6 +1,6 @@
-import { useRouter } from "next/router"
 import React, { FC } from "react"
 import { useQuery } from "react-query"
+import SingleArticle from "../components/SingleArticle/SingleArticle"
 import { ArticleData } from "./articles/[id]"
 
 interface ArticlesProps {}
@@ -49,7 +49,6 @@ const fetchPageContent = async (): Promise<ArticleData[]> => {
 }
 
 const Articles: FC<ArticlesProps> = () => {
-  const router = useRouter()
   const queryData = useQuery(["getAllArticles"], () => fetchPageContent())
 
   const { data, status } = queryData
@@ -59,22 +58,10 @@ const Articles: FC<ArticlesProps> = () => {
       <div>
         <h1>Articles</h1>
         {Object.keys(data).map((article) => (
-          <div
+          <SingleArticle
             key={data[article].articleString}
-            role="button"
-            onClick={() => {
-              router.push(`articles/${data[article].articleString}`)
-            }}
-            tabIndex={0}
-            onKeyDown={() => {
-              router.push(`articles/${data[article].articleString}`)
-            }}
-          >
-            <h3>{data[article].title}</h3>
-            <main>{data[article].subtitle}</main>
-            <h4>{data[article].articleType}</h4>
-            <h5>{String(data[article].date)}</h5>
-          </div>
+            articleData={data[article]}
+          />
         ))}
       </div>
     )

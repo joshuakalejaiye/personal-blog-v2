@@ -21,6 +21,8 @@ export interface ArticleData {
     gameResponse: {}
   }
   articleString: string
+  banner: string
+  bannerAltText: string
 }
 
 interface ArticleProps {

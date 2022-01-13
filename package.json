@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "on-mac": "source ~/.nvm/nvm.sh && nvm use && npm run dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

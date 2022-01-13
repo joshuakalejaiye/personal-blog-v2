@@ -2,6 +2,7 @@ import React, { FC, useState } from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { ReactQueryDevtools } from "react-query/devtools"
 import Layout from "../components/Layout/Layout"
+import "../styles/globals.css"
 
 interface MyAppProps {
   Component: FC

@@ -6,32 +6,31 @@ interface NavItemProps {
 }
 
 const NavItem: FC<NavItemProps> = ({ route }) => {
-  // eslint-disable-next-line eqeqeq
-  if (route == "/") {
-    return <Styled.NavItem href="/">Home</Styled.NavItem>
+  if (route === "/") {
+    return Styled.Link({
+      href: "/",
+      name: "Home",
+    })
   }
 
-  return (
-    <Styled.NavItem href={route}>
-      {route[1].toUpperCase() + route.slice(2)}
-    </Styled.NavItem>
-  )
+  return Styled.Link({
+    href: route,
+    name: route[1].toUpperCase() + route.slice(2),
+  })
 }
 
 const Header: FC = () => {
   const routes = ["/", "/articles", "/contact", "/about"]
 
   return (
-    <Styled.Header>
-      <div className="logo">
+    <Styled.NavBar>
+      <Styled.Logo>
         <h1>video et games</h1>
-      </div>
-      <Styled.NavBar>
-        {routes.map((route) => (
-          <NavItem key={route} route={route} />
-        ))}
-      </Styled.NavBar>
-    </Styled.Header>
+      </Styled.Logo>
+      {routes.map((route) => (
+        <NavItem key={route} route={route} />
+      ))}
+    </Styled.NavBar>
   )
 }
 
