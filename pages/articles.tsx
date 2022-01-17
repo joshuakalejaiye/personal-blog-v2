@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import { useQuery } from "react-query"
+import SearchBar from "../components/Search/Search"
 import SingleArticle from "../components/SingleArticle/SingleArticle"
 import { ArticleData } from "./articles/[id]"
 
@@ -49,7 +50,7 @@ const fetchPageContent = async (): Promise<ArticleData[]> => {
 }
 
 const Articles: FC<ArticlesProps> = () => {
-  const queryData = useQuery(["getAllArticles"], () => fetchPageContent())
+  const queryData = useQuery(["articles"], () => fetchPageContent())
 
   const { data, status } = queryData
 
@@ -57,6 +58,7 @@ const Articles: FC<ArticlesProps> = () => {
     return (
       <div>
         <h1>Articles</h1>
+        <SearchBar />
         {Object.keys(data).map((article) => (
           <SingleArticle
             key={data[article].articleString}
