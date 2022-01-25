@@ -1,5 +1,5 @@
-import React, { FC, Dispatch, SetStateAction, useRef } from "react"
-// import { useSearch } from "../../hooks"
+import React, { FC, Dispatch, SetStateAction, useRef, useEffect } from "react"
+import useSearchResults from "../../hooks/useSearchResults"
 import { ArticleData } from "../../pages/articles/[id]"
 
 interface SearchBarProps {
@@ -7,22 +7,40 @@ interface SearchBarProps {
 }
 
 const SearchBar: FC<SearchBarProps> = () => {
-  const searchContainer = useRef<HTMLInputElement>(null)
+  const searchBar = useRef<HTMLInputElement>(null)
   const searchButton = useRef<HTMLButtonElement>(null)
 
   // TO-DO: hook up useSearch hook
-  // const search = useSearch()
+  const [data, search] = useSearchResults()
+
+  useEffect(() => {
+    searchBar.current?.addEventListener("keyup", (event) => {
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault()
+        // Trigger the button element with a click
+        document.getElementById("search-button").click()
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    console.log(
+      `http://localhost:8080/search?searchTerm=${searchBar.current?.value}`,
+      data,
+    )
+  }, [data])
 
   return (
     <div>
-      <input ref={searchContainer} type="text" />
+      <input ref={searchBar} type="text" />
       <button
         ref={searchButton}
         type="button"
         id="search-button"
-        style={{ display: "none", width: "100%", marginBottom: "1rem" }}
+        style={{ display: "block", width: "100%", marginBottom: "1rem" }}
         onClick={() => {
-          // search(searchContainer.current?.value)
+          search(searchBar.current?.value)
         }}
       >
         Search

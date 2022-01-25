@@ -1,4 +1,4 @@
 import * as useArticles from "./useArticles"
-import * as useSearch from "./useSearch"
+import * as useSearchResults from "./useSearchResults"
 
-export { useArticles, useSearch }
+export { useArticles, useSearchResults }

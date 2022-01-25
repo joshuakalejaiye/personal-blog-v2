@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { ArticleData } from "../pages/articles/[id]"
 import { RootState } from "../reducers/rootReducers"
 
-// eslint-disable-next-line import/prefer-default-export
 const useArticles = (): [ArticleData[], QueryStatus] => {
   const dispatch = useDispatch()
+
   const queryData = useQuery(["articles"], async () =>
     (await fetch("http://localhost:8080/articles")).json(),
   )
