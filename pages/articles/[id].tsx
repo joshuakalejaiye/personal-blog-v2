@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import { NextRouter, useRouter } from "next/router"
-import { useQuery } from "react-query"
-// eslint-disable-next-line import/named
+import { useQuery, useQueryClient } from "react-query"
 import MediaScore, {
   MediaType,
   MovieTvData,
@@ -42,44 +41,6 @@ const routeToContent = (
   }
 }
 
-// const dummyData = {
-//   "no-way-home-delivers-mcu": {
-//     title: "Spider-Man: No Way Home delivers",
-//     subtitle:
-//       "No Way Home ends a thrilling trilogy with a bang, and a promise the MCU has to fulfill",
-//     date: new Date("December 17, 2021 13:24:00"),
-//     articleType: "Review",
-//     content:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
-//     mediaId: "tt10872600",
-//     mediaType: "MOVIE",
-//     articleString: "no-way-home-delivers-mcu",
-//   } as ArticleData,
-//   "daredevil-is-better-in-2022-mcu": {
-//     title: "Daredevil is better in 2022",
-//     subtitle: "The man without fear's story hits harder in 2022",
-//     date: new Date("December 20, 2021 13:24:00"),
-//     articleType: "Review",
-//     content:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
-//     mediaId: "tt3322312",
-//     mediaType: "TV",
-//     articleString: "daredevil-is-better-in-2022-mcu",
-//   } as ArticleData,
-//   "returning-to-bleach-mcu": {
-//     title: "Bleach",
-//     subtitle:
-//       "High school student Ichigo Kurosaki, who has the ability to see ghosts, gains soul reaper powers from Rukia Kuchiki and sets out to save the world from Hollows.",
-//     date: new Date("December 24, 2021 13:24:00"),
-//     articleType: "Review",
-//     content:
-//       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
-//     mediaId: "tt0434665",
-//     mediaType: "TV",
-//     articleString: "returning-to-bleach-mcu",
-//   } as ArticleData,
-// }
-
 const fetchPageContent = async (
   articleString: string,
 ): Promise<ArticleData> => {
@@ -91,10 +52,24 @@ const fetchPageContent = async (
 
 const Article: FC<ArticleProps> = () => {
   const router = useRouter()
+  const queryClient = useQueryClient()
   const articleString = router.query.id as string
 
-  const queryData = useQuery(["getArticle", articleString], () =>
-    fetchPageContent(articleString),
+  const queryData = useQuery(
+    ["getArticle", articleString],
+    () => fetchPageContent(articleString),
+    {
+      initialData: () => {
+        const articles: ArticleData[] = queryClient.getQueryData("articles")
+        if (
+          articles &&
+          Object.keys(articles)?.find((str) => str === articleString)
+        ) {
+          return articles[articleString]
+        }
+        return undefined
+      },
+    },
   )
 
   const { data, status } = queryData

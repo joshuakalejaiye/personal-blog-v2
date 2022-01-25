@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { ArticleData } from "../pages/articles/[id]"
 import { RootState } from "../reducers/rootReducers"
 
+// eslint-disable-next-line import/prefer-default-export
 const useArticles = (): [ArticleData[], QueryStatus] => {
   const dispatch = useDispatch()
   const queryData = useQuery(["articles"], async () =>
@@ -11,10 +12,7 @@ const useArticles = (): [ArticleData[], QueryStatus] => {
 
   dispatch({ type: "SET_ARTICLES", data: queryData.data })
 
-  const articles = useSelector((state: RootState) => {
-    console.log(state)
-    return state.allArticles
-  })
+  const articles = useSelector((state: RootState) => state.allArticles)
 
   return [articles, queryData.status]
 }

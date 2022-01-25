@@ -2,12 +2,12 @@ import { ArticleData } from "../pages/articles/[id]"
 
 export interface RootState {
   allArticles: ArticleData[]
-  searchResults: ArticleData[]
+  searched: Boolean
 }
 
 const initialState: RootState = {
   allArticles: [{} as ArticleData],
-  searchResults: [{} as ArticleData],
+  searched: false,
 }
 
 const rootReducer = (
@@ -18,8 +18,8 @@ const rootReducer = (
   },
 ) => {
   switch (action.type) {
-    case "SAVE_SEARCH":
-      return { ...state, searchResults: action.data }
+    case "SEARCHED":
+      return { ...state, searched: action.data }
     case "SET_ARTICLES":
       return { ...state, allArticles: action.data }
     default:

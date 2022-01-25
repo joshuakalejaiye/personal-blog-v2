@@ -1,22 +1,21 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { useQuery } from "react-query"
-import { useDispatch } from "react-redux"
+import { ArticleData } from "../pages/articles/[id]"
 
-const useSearch = (): Dispatch<SetStateAction<string>> => {
+// eslint-disable-next-line import/prefer-default-export
+const useSearch = (): [ArticleData[], Dispatch<SetStateAction<string>>] => {
   const [filter, setFilter] = useState(null)
-  const dispatch = useDispatch()
+
   const queryData = useQuery(
-    ["filtered-articles", filter],
+    ["searchArticle", filter],
     async () =>
       (await fetch(`http://localhost:8080/search?searchTerm=${filter}`)).json(),
-    { enabled: Boolean(filter) },
+    {
+      enabled: Boolean(filter),
+    },
   )
 
-  useEffect(() => {
-    dispatch({ type: "SAVE_SEARCH", data: queryData.data })
-  }, [queryData.data, dispatch])
-
-  return setFilter
+  return [queryData.data, setFilter]
 }
 
 export default useSearch
