@@ -1,12 +1,13 @@
 import React, { FC, Dispatch, SetStateAction, useRef, useEffect } from "react"
 import useSearchResults from "../../hooks/useSearchResults"
 import { ArticleData } from "../../pages/articles/[id]"
+import * as Styled from "./SearchBar.styles"
 
 interface SearchBarProps {
-  handleClick: Dispatch<SetStateAction<ArticleData[]>>
+  handleSearch: Dispatch<SetStateAction<ArticleData[]>>
 }
 
-const SearchBar: FC<SearchBarProps> = () => {
+const SearchBar: FC<SearchBarProps> = ({ handleSearch }) => {
   const searchBar = useRef<HTMLInputElement>(null)
   const searchButton = useRef<HTMLButtonElement>(null)
 
@@ -25,26 +26,22 @@ const SearchBar: FC<SearchBarProps> = () => {
   }, [])
 
   useEffect(() => {
-    console.log(
-      `http://localhost:8080/search?searchTerm=${searchBar.current?.value}`,
-      data,
-    )
-  }, [data])
+    handleSearch(data)
+  }, [data, handleSearch])
 
   return (
     <div>
-      <input ref={searchBar} type="text" />
-      <button
+      <Styled.SearchBar ref={searchBar} type="text" />
+      <Styled.SearchButton
         ref={searchButton}
         type="button"
         id="search-button"
-        style={{ display: "block", width: "100%", marginBottom: "1rem" }}
         onClick={() => {
           search(searchBar.current?.value)
         }}
       >
         Search
-      </button>
+      </Styled.SearchButton>
     </div>
   )
 }

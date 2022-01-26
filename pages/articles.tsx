@@ -1,33 +1,45 @@
 import React, { FC, useEffect, useState } from "react"
+import styled from "styled-components"
 import SearchBar from "../components/SearchBar/SearchBar"
 import SingleArticle from "../components/SingleArticle/SingleArticle"
 import useArticles from "../hooks/useArticles"
-import { ArticleData } from "./articles/[id]"
 
-interface ArticlesProps {}
+const StyledTitle = styled.h1``
 
-const Articles: FC<ArticlesProps> = () => {
+const StyledContainer = styled.div`
+  display: grid;
+  place-items: center;
+  margin: 0px auto;
+`
+
+const StyledLister = styled.div``
+
+const Articles: FC = () => {
   const [data, status] = useArticles()
 
-  const [dataSource, setDataSource] = useState([] as ArticleData[])
+  const [dataSource, setDataSource] = useState(data)
 
   useEffect(() => {
-    setDataSource(data)
-  }, [data])
+    if (status === "success") {
+      setDataSource(data)
+    }
+  }, [data, status])
 
   if (status === "success") {
     return (
-      <div>
-        <h1>Articles</h1>
-        <SearchBar handleClick={setDataSource} />
-        {dataSource &&
-          Object.keys(dataSource).map((article) => (
-            <SingleArticle
-              key={dataSource[article].articleString}
-              articleData={dataSource[article]}
-            />
-          ))}
-      </div>
+      <StyledContainer>
+        <StyledTitle>Articles</StyledTitle>
+        <SearchBar handleSearch={setDataSource} />
+        <StyledLister>
+          {dataSource &&
+            Object.keys(dataSource).map((article) => (
+              <SingleArticle
+                key={dataSource[article].articleString}
+                articleData={dataSource[article]}
+              />
+            ))}
+        </StyledLister>
+      </StyledContainer>
     )
   }
 
@@ -38,7 +50,7 @@ const Articles: FC<ArticlesProps> = () => {
   if (status === "error") {
     return (
       <div className="center">
-        Failed to fetch articles{" "}
+        Something went wrong
         <span role="img" aria-label="sad">
           😢
         </span>

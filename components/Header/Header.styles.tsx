@@ -19,7 +19,7 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: flex-end;
   margin: 10 auto 80px;
-  padding: 10px 0;
+  padding: 10px 80px;
   align-items: flex-end;
   margin-bottom: 60px;
   border-bottom: 1px solid #eaeaea;

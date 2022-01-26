@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import Image from "next/image"
 import { NextRouter, useRouter } from "next/router"
+import * as Styled from "./MediaScore.styles"
 
 export type MediaType = "MOVIE" | "TV" | "GAME"
 
@@ -55,15 +56,13 @@ const MediaScore: FC<MediaScoreProps> = ({ handleClick, mediaDetails }) => {
     const { title, ratings } = movieTvResponse
 
     return (
-      <div
+      <Styled.MediaContainer
         role="button"
         tabIndex={0}
         onClick={() => handleClick(mediaType, mediaId, router)}
         onKeyDown={() => handleClick(mediaType, mediaId, router)}
-        style={{ display: "flex", flexDirection: "row" }}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>{title}</h2>
+        <Styled.PosterContainer>
           {movieTvResponse && (
             <Image
               src={MovieTvLoader(movieTvResponse)}
@@ -72,25 +71,25 @@ const MediaScore: FC<MediaScoreProps> = ({ handleClick, mediaDetails }) => {
               height="345"
             />
           )}
-        </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <h4>Scores</h4>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+        </Styled.PosterContainer>
+        <Styled.TextContainer>
+          <Styled.MediaTitle>{title}</Styled.MediaTitle>
+          <Styled.ScoresContent>
             {ratings &&
               ratings.map((rating) => (
                 // console.log(rating)
-                <div key={rating.source}>
-                  <h4>
+                <Styled.ScoresLister key={rating.source}>
+                  <Styled.RatingSource>
                     {rating.source === "Internet Movie Database"
                       ? "IMDB"
                       : rating.source}
-                  </h4>
-                  <div>{rating.value}</div>
-                </div>
+                  </Styled.RatingSource>
+                  <Styled.RatingValue>{rating.value}</Styled.RatingValue>
+                </Styled.ScoresLister>
               ))}
-          </div>
-        </div>
-      </div>
+          </Styled.ScoresContent>
+        </Styled.TextContainer>
+      </Styled.MediaContainer>
     )
   }
   //! !!! really bad for SEO do not leave this in production

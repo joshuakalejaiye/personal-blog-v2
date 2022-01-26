@@ -15,7 +15,7 @@ const ArticleCard = styled.div<CardProps>`
   margin-bottom: 15px;
   background-color: #fff;
   min-height: ${(props) => props.height + 1}px;
-
+  min-width: 960px;
   &:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 3px #e0e0e0;
