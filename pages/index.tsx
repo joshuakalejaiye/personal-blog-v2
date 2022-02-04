@@ -12,19 +12,16 @@ const Home = () => (
     </Head>
 
     <div>
-      <h1>Homepage</h1>
+      <h1>Welcome!</h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-        eligendi odio necessitatibus, officiis quae corporis magnam quidem
-        debitis sit laboriosam rem, reprehenderit culpa dolore illum! Quia,
-        magnam? Dolorum, fugiat nostrum.
+        I&apos;m a Software Developer who is, clearly, very very into video
+        games, shows and movies. So much so that I thought it&apos;d be fun to
+        build this site and talk about them. I hope you like what I have to say,
+        or we can at least agree to disagree.
       </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iure
-        recusandae debitis officia delectus praesentium officiis iusto, maxime
-        blanditiis unde optio quisquam eos, aliquam ratione dolore, vel culpa.
-        Aliquam, doloremque?
-      </p>
+      <p>Just click on one of the articles below to get started</p>
+      <br />
+      <div>Coming Soon</div>
     </div>
   </div>
 )
