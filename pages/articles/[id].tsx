@@ -5,6 +5,8 @@ import MediaScore, {
   MediaType,
   MovieTvData,
 } from "../../components/MediaScore/MediaScore"
+import Layout from "../../components/Layout/Layout"
+import { websiteName } from ".."
 
 export type ArticleType = "Article" | "Review"
 export interface ArticleData {
@@ -51,6 +53,7 @@ const fetchPageContent = async (
 }
 
 const Article: FC<ArticleProps> = () => {
+  let pageTitle = "Loading..."
   const router = useRouter()
   const queryClient = useQueryClient()
   const articleString = router.query.id as string
@@ -76,8 +79,13 @@ const Article: FC<ArticleProps> = () => {
 
   if (status === "success") {
     const { title, subtitle, date, articleType, content, mediaDetails } = data
+
+    pageTitle = `${title} | ${
+      articleType[0] + articleType.toLowerCase().slice(1, articleType.length)
+    } - ${websiteName}`
+
     return (
-      <div>
+      <Layout title={pageTitle}>
         <h2>{title}</h2>
         <div>
           <h3>{subtitle}</h3>
@@ -86,7 +94,7 @@ const Article: FC<ArticleProps> = () => {
           <main>{content}</main>
         </div>
         <MediaScore mediaDetails={mediaDetails} handleClick={routeToContent} />
-      </div>
+      </Layout>
     )
   }
 

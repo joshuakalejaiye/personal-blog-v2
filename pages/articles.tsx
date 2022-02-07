@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import styled from "styled-components"
+import { websiteName } from "."
+import Layout from "../components/Layout/Layout"
 import SearchBar from "../components/SearchBar/SearchBar"
 import SingleArticle from "../components/SingleArticle/SingleArticle"
 import useArticles from "../hooks/useArticles"
@@ -15,6 +17,7 @@ const StyledContainer = styled.div`
 const StyledLister = styled.div``
 
 const Articles: FC = () => {
+  const pageTitle = `${Articles.name} - ${websiteName}`
   const [data, status] = useArticles()
 
   const [dataSource, setDataSource] = useState(data)
@@ -27,19 +30,21 @@ const Articles: FC = () => {
 
   if (status === "success") {
     return (
-      <StyledContainer>
-        <StyledTitle>Articles</StyledTitle>
-        <SearchBar handleSearch={setDataSource} />
-        <StyledLister>
-          {dataSource &&
-            Object.keys(dataSource).map((article) => (
-              <SingleArticle
-                key={dataSource[article].articleString}
-                articleData={dataSource[article]}
-              />
-            ))}
-        </StyledLister>
-      </StyledContainer>
+      <Layout title={pageTitle}>
+        <StyledContainer>
+          <StyledTitle>Articles</StyledTitle>
+          <SearchBar handleSearch={setDataSource} />
+          <StyledLister>
+            {dataSource &&
+              Object.keys(dataSource).map((article) => (
+                <SingleArticle
+                  key={dataSource[article].articleString}
+                  articleData={dataSource[article]}
+                />
+              ))}
+          </StyledLister>
+        </StyledContainer>
+      </Layout>
     )
   }
 

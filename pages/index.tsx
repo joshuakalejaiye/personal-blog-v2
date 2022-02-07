@@ -1,29 +1,25 @@
-import Head from "next/head"
+import Layout from "../components/Layout/Layout"
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>video et games</title>
-      <meta
-        name="description"
-        content="my thoughts on movies, tv and video games"
-      />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+export const websiteName = "video et games"
 
-    <div>
-      <h1>Welcome!</h1>
-      <p>
-        I&apos;m a Software Developer who is, clearly, very very into video
-        games, shows and movies. So much so that I thought it&apos;d be fun to
-        build this site and talk about them. I hope you like what I have to say,
-        or we can at least agree to disagree.
-      </p>
-      <p>Just click on one of the articles below to get started</p>
-      <br />
-      <div>Coming Soon</div>
-    </div>
-  </div>
-)
+const Home = () => {
+  const pageTitle = `${Home.name} - ${websiteName}`
+  return (
+    <Layout title={pageTitle}>
+      <div>
+        <h1>Welcome!</h1>
+        <p>
+          I&apos;m Josh, I&apos;m a Software Developer who is—clearly—very very
+          into video games, shows and movies. So much so that I thought
+          it&apos;d be fun to build this site and talk about them. I hope you
+          like what I have to say, or we can at least agree to disagree.
+        </p>
+        <p>Just click on one of the articles below to get started</p>
+        <br />
+        <div>Coming Soon</div>
+      </div>
+    </Layout>
+  )
+}
 
 export default Home
