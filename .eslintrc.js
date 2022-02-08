@@ -33,6 +33,13 @@ module.exports = {
     "import/extensions": "off",
     "react/jsx-props-no-spreading": "off",
     semi: "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        controlComponents: ["Field"],
+        depth: 3,
+      },
+    ],
   },
   settings: {
     react: {
