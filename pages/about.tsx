@@ -5,7 +5,7 @@ import Layout from "../components/Layout/Layout"
 interface AboutProps {}
 
 const About: FC<AboutProps> = () => {
-  const pageTitle = `${About.name} - ${websiteName}`
+  const pageTitle = `About - ${websiteName}`
 
   return (
     <Layout title={pageTitle}>
