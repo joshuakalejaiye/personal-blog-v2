@@ -32,7 +32,7 @@ const Articles: FC = () => {
     return (
       <Layout title={pageTitle}>
         <StyledContainer>
-          <StyledTitle>{Articles.name}</StyledTitle>
+          <StyledTitle>Articles</StyledTitle>
           <SearchBar handleSearch={setDataSource} />
           <StyledLister>
             {dataSource &&
