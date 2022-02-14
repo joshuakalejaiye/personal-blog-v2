@@ -1,16 +1,8 @@
 import { createArticle } from "../../lib/redis"
 
-const Handler = async (req, res) => {
-  let id: string
-
-  try {
-    id = await createArticle(req.body)
-  } catch (error) {
-    res.status(404)
-    return
-  }
-
-  res.status(200).JSON({ id })
+const handler = async (req, res) => {
+  const id = await createArticle(req.body)
+  res.status(200).json({ id })
 }
 
-export default Handler
+export default handler

@@ -37,14 +37,14 @@ const ArticleForm = (): ReactElement => {
         title: "",
         subtitle: "",
         date: "",
-        articleType: "",
+        articleType: "REVIEW",
         content: "",
         articleString: "",
         banner: "",
         bannerAltText: "",
         tags: "",
         mediaId: "",
-        mediaType: "",
+        mediaType: "TV",
       }}
       onSubmit={(values) => handleSubmit(values)}
     >
@@ -72,9 +72,13 @@ const ArticleForm = (): ReactElement => {
 
         <label>
           ArticleType
-          <Field name="articleType" type="text" />
+          <Field type="radio" name="articleType" value="REVIEW" />
+          REVIEW
         </label>
-
+        <label>
+          <Field type="radio" name="articleType" value="ARTICLE" />
+          ARTICLE
+        </label>
         <br />
 
         <label>

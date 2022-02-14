@@ -19,7 +19,7 @@ const schema = new Schema(
     date: { type: "string" },
     articleType: { type: "string" },
     content: { type: "string" },
-    articleString: { type: "string" },
+    articleString: { type: "string", textSearch: true },
     banner: { type: "string" },
     bannerAltText: { type: "string" },
     tags: { type: "string" },
@@ -32,7 +32,7 @@ const schema = new Schema(
 )
 
 export const createArticle = async (data) => {
-  console.warn(data)
+  console.log("post created", data)
   await connect()
 
   const repository = new Repository(schema, client)
@@ -42,4 +42,18 @@ export const createArticle = async (data) => {
   const id = await repository.save(article)
 
   return id
+}
+
+export const searchArticles = async (searchTerm) => {
+  await connect()
+
+  const repository = new Repository(schema, client)
+
+  // prettier-ignore
+  const articles = repository.search()
+    .where("title").eq(searchTerm)
+    .or("model").eq(searchTerm)
+    .return.all()
+
+  return articles
 }
