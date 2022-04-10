@@ -5,11 +5,11 @@ import Layout from "../components/Layout/Layout"
 interface AboutProps {}
 
 const About: FC<AboutProps> = () => {
-  const pageTitle = `${About.name} - ${websiteName}`
+  const pageTitle = `About - ${websiteName}`
 
   return (
     <Layout title={pageTitle}>
-      <h1>{pageTitle}</h1>
+      <h1>About</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dignissimos
         tempore esse eveniet quisquam at enim nulla explicabo. Saepe ipsum nulla

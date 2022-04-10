@@ -3,7 +3,7 @@ import Layout from "../components/Layout/Layout"
 export const websiteName = "video et games"
 
 const Home = () => {
-  const pageTitle = `${Home.name} - ${websiteName}`
+  const pageTitle = `Home - ${websiteName}`
   return (
     <Layout title={pageTitle}>
       <div>

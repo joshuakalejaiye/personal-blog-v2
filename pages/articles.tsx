@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
 const StyledLister = styled.div``
 
 const Articles: FC = () => {
-  const pageTitle = `${Articles.name} - ${websiteName}`
+  const pageTitle = `Articles - ${websiteName}`
   const [data, status] = useArticles()
 
   const [dataSource, setDataSource] = useState(data)

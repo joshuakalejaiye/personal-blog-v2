@@ -5,7 +5,7 @@ import Layout from "../components/Layout/Layout"
 interface ContactProps {}
 
 const Contact: FC<ContactProps> = () => {
-  const pageTitle = `${Contact.name} - ${websiteName}`
+  const pageTitle = `Contact - ${websiteName}`
   return (
     <Layout title={pageTitle}>
       <h1>Contact</h1>
