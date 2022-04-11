@@ -7,6 +7,7 @@ import MediaScore, {
 } from "../../components/MediaScore/MediaScore"
 import Layout from "../../components/Layout/Layout"
 import { websiteName } from ".."
+import mediaUrl from "../../urls"
 
 export type ArticleType = "Article" | "Review"
 export interface ArticleData {
@@ -47,7 +48,7 @@ const fetchPageContent = async (
   articleString: string,
 ): Promise<ArticleData> => {
   const pageContent = (
-    await fetch(`http://localhost:8080/articles/${articleString}`)
+    await fetch(`${mediaUrl}/articles/${articleString}`)
   ).json()
   return pageContent
 }

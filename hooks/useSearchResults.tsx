@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import { useDispatch } from "react-redux"
 import { ArticleData } from "../pages/articles/[id]"
+import mediaUrl from "../urls"
 
 const useSearchResults = (): [
   ArticleData[],
@@ -13,9 +14,7 @@ const useSearchResults = (): [
   const queryData = useQuery(
     ["searchArticles", searchString],
     async () =>
-      (
-        await fetch(`http://localhost:8080/search?searchTerm=${searchString}`)
-      ).json(),
+      (await fetch(`${mediaUrl}/search?searchTerm=${searchString}`)).json(),
     { enabled: Boolean(searchString) },
   )
 
