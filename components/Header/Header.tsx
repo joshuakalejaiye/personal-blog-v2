@@ -23,7 +23,9 @@ const NavItem: FC<NavItemProps> = ({ route }) => {
 const Header: FC = () => (
   <Styled.NavBar>
     <Styled.DesktopNav>
-      <Styled.Logo>Dsk</Styled.Logo>
+      <Styled.Logo>
+        <Styled.InnerLogo />
+      </Styled.Logo>
       <div>
         {Object.values(routes).map((route) => (
           <NavItem key={route} route={route} />
@@ -31,7 +33,9 @@ const Header: FC = () => (
       </div>
     </Styled.DesktopNav>
     <Styled.MobileNav>
-      <Styled.Logo>Mob</Styled.Logo>
+      <Styled.Logo>
+        <Styled.InnerLogo />
+      </Styled.Logo>
       <div>
         {Object.values(routes).map((route) => (
           <NavItem key={route} route={route} />

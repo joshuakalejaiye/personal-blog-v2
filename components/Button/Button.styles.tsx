@@ -29,7 +29,7 @@ const InnerButton = styled.button<Props>`
       props.reverse
         ? `box-shadow: inset -100px 0 0 0 #0e0e0e; `
         : `box-shadow: inset 100px 0 0 0 #0e0e0e;`}
-    transition: ease-out 0.2s;
+    transition: ease-out 0.4s;
     color: white;
     font-weight: light;
     cursor: pointer;
