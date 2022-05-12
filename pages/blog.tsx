@@ -1,24 +1,30 @@
 import React, { FC, useEffect, useState } from "react"
 import styled from "styled-components"
-import { websiteName } from "."
 import Layout from "../components/Layout/Layout"
-import SearchBar from "../components/SearchBar/SearchBar"
+// import SearchBar from "../components/SearchBar/SearchBar"
 import SingleArticle from "../components/SingleArticle/SingleArticle"
-import useArticles from "../hooks/useArticles"
+// import useArticles from "../hooks/useArticles"
+import websiteName from "../site-details"
+import articleJSON from "../public/articles.json"
+import { ArticleData } from "../ArticleData"
 
 const StyledTitle = styled.h1``
 
 const StyledContainer = styled.div`
-  display: grid;
-  place-items: center;
-  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledLister = styled.div``
 
-const Articles: FC = () => {
+const Blog: FC = () => {
   const pageTitle = `Articles - ${websiteName}`
-  const [data, status] = useArticles()
+  // const [data, status] = useArticles()
+  const articleData: ArticleData[] = articleJSON
+  const status = "success"
+  const data = Object.fromEntries(
+    articleData.map((article) => [article.articleString, article]),
+  )
 
   const [dataSource, setDataSource] = useState(data)
 
@@ -26,14 +32,18 @@ const Articles: FC = () => {
     if (status === "success") {
       setDataSource(data)
     }
-  }, [data, status])
+  }, [data])
+
+  // const onSearch = (data: any) => {
+  //   setDataSource(data)
+  // }
 
   if (status === "success") {
     return (
       <Layout title={pageTitle}>
         <StyledContainer>
-          <StyledTitle>Articles</StyledTitle>
-          <SearchBar handleSearch={setDataSource} />
+          <StyledTitle>Blog</StyledTitle>
+          {/* <SearchBar handleSearch={onSearch} /> */}
           <StyledLister>
             {dataSource &&
               Object.keys(dataSource).map((article) => (
@@ -67,4 +77,4 @@ const Articles: FC = () => {
   return <div />
 }
 
-export default Articles
+export default Blog

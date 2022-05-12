@@ -1,23 +1,65 @@
+import Image from "next/image"
+import styled from "styled-components"
+import { Button } from "../components/Button"
 import Layout from "../components/Layout/Layout"
+import websiteName from "../site-details"
+import selfie from "../public/images/selfie.jpg"
 
-export const websiteName = "video et games"
+const LandingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+`
+
+const StyledDetails = styled.div`
+  max-width: 60%;
+  margin: 50px;
+
+  @media (max-width: 1000px) {
+    max-width: 100%;
+  }
+`
 
 const Home = () => {
   const pageTitle = `Home - ${websiteName}`
+  const ghLink: string = "http://www.github.com/joshuakalejaiye"
+  const mailLink: string = "mailto:joshua.s.kalejaiye@gmail.com"
+
   return (
-    <Layout title={pageTitle}>
-      <div>
-        <h1>Welcome!</h1>
-        <p>
-          I&apos;m Josh, I&apos;m a Software Developer who is—clearly—very very
-          into video games, shows and movies. So much so that I thought
-          it&apos;d be fun to build this site and talk about them. I hope you
-          like what I have to say, or we can at least agree to disagree.
-        </p>
-        <p>Just click on one of the articles below to get started</p>
-        <br />
-        <div>Coming Soon</div>
-      </div>
+    <Layout flex title={pageTitle}>
+      <LandingContainer id="home">
+        <Image className="portrait" src={selfie} alt="myself" />
+        <StyledDetails>
+          <h1>Welcome!</h1>
+          <p>
+            I&apos;m an enthusiastic Undergraduate Software Developer eager to
+            contribute to team projects and achieve success through hard work,
+            attention to detail and excellent organizational skills. I have a
+            clear understanding of React and JavaScript and am trained in
+            multiple C-based languages. I&apos;m highly motivated to learn, grow
+            and excel in the Software Development Industry.
+          </p>
+          <div
+            id="buttons"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Button route={ghLink} newTab>
+              GITHUB
+            </Button>
+            <Button reverse route={mailLink}>
+              EMAIL
+            </Button>
+          </div>
+        </StyledDetails>
+      </LandingContainer>
     </Layout>
   )
 }

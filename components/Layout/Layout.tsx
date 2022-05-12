@@ -6,16 +6,31 @@ import * as Styled from "./Layout.styles"
 
 interface LayoutProps {
   title: string
+  flex?: boolean
+  flexDirection?: string
+  minHeight?: number
 }
 
-const Layout: FC<LayoutProps> = ({ children, title = "video et games" }) => (
+const Layout: FC<LayoutProps> = ({
+  children,
+  title = "Joshua Kalejaiye",
+  flex = false,
+  flexDirection = "column",
+  minHeight,
+}) => (
   <div className="layout">
     <Head>
       <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Header />
-    <Styled.Content>{children}</Styled.Content>
+    <Styled.Content
+      flex={flex}
+      flexDirection={flexDirection}
+      minHeight={minHeight}
+    >
+      {children}
+    </Styled.Content>
     <Footer />
   </div>
 )

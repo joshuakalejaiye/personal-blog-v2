@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     "comma-dangle": "off",
     "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
     "require-jsdoc": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],

@@ -1,24 +1,28 @@
 import React, { FC } from "react"
-import { websiteName } from "."
+import styled from "styled-components"
 import Layout from "../components/Layout/Layout"
+import websiteName from "../site-details"
 
 interface ContactProps {}
+const StyledTitle = styled.h1``
 
 const Contact: FC<ContactProps> = () => {
   const pageTitle = `Contact - ${websiteName}`
+
   return (
     <Layout title={pageTitle}>
-      <h1>Contact</h1>
+      <StyledTitle>Contact</StyledTitle>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam animi
-        cupiditate, suscipit consequatur aliquam commodi molestiae dolore illo
-        nesciunt laborum delectus laudantium ad hic perspiciatis ipsum
-        aspernatur reiciendis rerum iusto?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dignissimos
+        tempore esse eveniet quisquam at enim nulla explicabo. Saepe ipsum nulla
+        architecto veritatis ducimus cupiditate hic voluptatum quam cum
+        consequuntur.
       </p>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae,
-        voluptatum error illo quia fuga ipsum iste quaerat dignissimos a odio
-        impedit, culpa quo quasi corporis tempore at esse adipisci autem.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel dignissimos
+        tempore esse eveniet quisquam at enim nulla explicabo. Saepe ipsum nulla
+        architecto veritatis ducimus cupiditate hic voluptatum quam cum
+        consequuntur.
       </p>
     </Layout>
   )

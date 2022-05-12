@@ -1,6 +1,6 @@
 import React, { FC, Dispatch, SetStateAction, useRef, useEffect } from "react"
+import { ArticleData } from "../../ArticleData"
 import useSearchResults from "../../hooks/useSearchResults"
-import { ArticleData } from "../../pages/articles/[id]"
 import * as Styled from "./SearchBar.styles"
 
 interface SearchBarProps {

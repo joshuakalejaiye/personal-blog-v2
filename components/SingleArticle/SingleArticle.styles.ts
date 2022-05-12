@@ -15,7 +15,7 @@ const ArticleCard = styled.div<CardProps>`
   margin-bottom: 15px;
   background-color: #fff;
   min-height: ${(props) => props.height + 1}px;
-  min-width: 960px;
+
   &:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 3px #e0e0e0;
@@ -25,12 +25,21 @@ const ArticleCard = styled.div<CardProps>`
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+
+  //for mobile
+  @media (max-width: 600px) {
+    flex-direction: column;
+    color: red;
+  }
 `
 
 const Title = styled.h2``
 
 const Subtitle = styled.p`
-  padding-right: 280px;
+  //for desktop
+  @media (min-width: 600px) {
+    padding-right: 280px;
+  }
 `
 
 const ArticleType = styled.p``

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { useQuery } from "react-query"
 import { useDispatch } from "react-redux"
-import { ArticleData } from "../pages/articles/[id]"
+import { ArticleData } from "../ArticleData"
 import mediaUrl from "../urls"
 
 const useSearchResults = (): [
@@ -19,7 +19,7 @@ const useSearchResults = (): [
   )
 
   useEffect(() => {
-    dispatch({ type: "SEARCHED", data: Boolean(searchString) })
+    dispatch({ type: "SEARCHED", payload: searchString })
   }, [searchString, queryData.data, dispatch])
 
   return [queryData.data, search]

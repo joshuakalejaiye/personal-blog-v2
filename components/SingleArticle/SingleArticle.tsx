@@ -1,6 +1,8 @@
 import { useRouter } from "next/router"
 import React, { FunctionComponent } from "react"
-import { ArticleData } from "../../pages/articles/[id]"
+import { ArticleData } from "../../ArticleData"
+
+import { routes } from "../../site-details"
 import * as Styled from "./SingleArticle.styles"
 
 interface SingleArticleProps {
@@ -14,17 +16,18 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
 
   const { title, articleString, subtitle, articleType, date } = articleData
   const cardHeight = 234
+  // const imageWidth = 155
 
   return (
     <Styled.ArticleCard
       height={cardHeight}
       role="button"
       onClick={() => {
-        router.push(`articles/${articleString}`)
+        router.push(`${routes.Blog}/${articleString}`)
       }}
       tabIndex={0}
       onKeyDown={() => {
-        router.push(`articles/${articleString}`)
+        router.push(`${routes.Blog}/${articleString}`)
       }}
     >
       <Styled.Content>
@@ -33,12 +36,13 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
         <Styled.ArticleType>{articleType}</Styled.ArticleType>
         <Styled.Date>{String(date)}</Styled.Date>
       </Styled.Content>
-      <Styled.Image
+      {/* TODO: "add this when api response is added" */}
+      {/* <Styled.Image
         src={articleData.banner}
         alt={articleData.bannerAltText}
-        width={155}
+        width={imageWidth}
         height={cardHeight}
-      />
+      /> */}
     </Styled.ArticleCard>
   )
 }
