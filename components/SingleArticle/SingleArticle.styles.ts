@@ -13,19 +13,18 @@ const ArticleCard = styled.div<CardProps>`
   padding: 5px 15px;
   margin-bottom: 15px;
   background-color: ${(props) => props.theme.secondary};
-  min-height: ${(props) => props.height + 1}px;
+  min-height: ${(props) => props.height + 2}px;
 
   &:hover {
     cursor: pointer;
     background-color: ${(props) => props.theme.tertiary};
-    transform: scale(1.01);
   }
 `
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-
+  margin-right: 80px;
   //for mobile
   @media (max-width: 600px) {
     flex-direction: column;

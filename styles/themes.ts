@@ -26,7 +26,7 @@ export const darkTheme: ThemeType = {
   light: "#939393",
   fontColor: "#d8e1ed",
   btnFontColor: "#282828",
-  accent: "#738ADB",
+  accent: "#685bcc",
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>` 

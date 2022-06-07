@@ -14,9 +14,19 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
 }) => {
   const router = useRouter()
 
-  const { title, articleString, subtitle, articleType, date } = articleData
-  const cardHeight = 234
+  const {
+    title,
+    articleString,
+    subtitle,
+    articleType,
+    date,
+    banner,
+    bannerAltText,
+  } = articleData
+  const cardHeight = 230
   // const imageWidth = 155
+
+  console.log(banner)
 
   return (
     <Styled.ArticleCard
@@ -36,13 +46,9 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
         <Styled.Date>{String(date)}</Styled.Date>
       </Styled.Content>
-      {/* TODO: "add this when api response is added" */}
-      {/* <Styled.Image
-        src={articleData.banner}
-        alt={articleData.bannerAltText}
-        width={imageWidth}
-        height={cardHeight}
-      /> */}
+      {banner && (
+        <Styled.Image src={banner} height={cardHeight} alt={bannerAltText} />
+      )}
     </Styled.ArticleCard>
   )
 }

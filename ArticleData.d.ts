@@ -4,13 +4,15 @@ export interface ArticleData {
   date: string
   articleType: string
   content: string
-  mediaDetails: {
+  articleString: string
+  mediaDetails?: {
     mediaId: string
     mediaType: string
     movieTvResponse: {}
     gameResponse: {}
   }
-  articleString: string
+  banner?: any
+  bannerAltText?: string
 }
 // {
 //   title: string
