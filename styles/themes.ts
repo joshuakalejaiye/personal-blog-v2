@@ -16,7 +16,7 @@ export const lightTheme: ThemeType = {
   tertiary: "#e6e6e6",
   fontColor: "#000",
   btnFontColor: "#000a12",
-  accent: "#e6e6e6",
+  accent: "#000",
 }
 
 export const darkTheme: ThemeType = {
