@@ -26,6 +26,21 @@ const StyledDetails = styled.div`
   }
 `
 
+const ImageCropper = styled.div`
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  min-width: 300px;
+  min-height: 300px;
+`
+
+//  display: inline;
+//     margin: 0 auto;
+//     height: 100%;
+//     width: auto;
+
 const Home = () => {
   const pageTitle = `${websiteName} - Software Engineer`
   const ghLink: string = "http://www.github.com/joshuakalejaiye"
@@ -60,7 +75,9 @@ const Home = () => {
             </Button>
           </div>
         </StyledDetails>
-        <NextImage src={selfie} alt="myself" />
+        <ImageCropper>
+          <NextImage src={selfie} alt="myself" />
+        </ImageCropper>
       </LandingContainer>
     </Layout>
   )

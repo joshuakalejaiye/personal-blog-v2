@@ -26,7 +26,7 @@ const NavItem = styled.a`
   }
 
   @media (min-width: 660px) {
-    font-size: 14px;
+    font-size: 17px;
   }
 `
 

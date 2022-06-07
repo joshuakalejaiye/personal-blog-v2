@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useEffect, useState } from "react"
 import { ArticleData } from "../../ArticleData"
 
 import { routes } from "../../site-details"
@@ -23,10 +23,23 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
     banner,
     bannerAltText,
   } = articleData
-  const cardHeight = 230
-  // const imageWidth = 155
 
-  console.log(banner)
+  const [cardHeight, setCardHeight] = useState(230)
+
+  const handleImageResize = (e: any) => {
+    if (e.matches) {
+      setCardHeight(155)
+    } else {
+      setCardHeight(230)
+    }
+  }
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 450px)")
+    mediaQuery.addListener(handleImageResize)
+    handleImageResize(mediaQuery)
+    return () => mediaQuery.removeListener(handleImageResize)
+  }, [])
 
   return (
     <Styled.ArticleCard
@@ -46,9 +59,11 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
         <Styled.Subtitle>{subtitle}</Styled.Subtitle>
         <Styled.Date>{String(date)}</Styled.Date>
       </Styled.Content>
-      {banner && (
-        <Styled.Image src={banner} height={cardHeight} alt={bannerAltText} />
-      )}
+      <Styled.ImageContainer>
+        {banner && (
+          <Styled.Image src={banner} height={cardHeight} alt={bannerAltText} />
+        )}
+      </Styled.ImageContainer>
     </Styled.ArticleCard>
   )
 }

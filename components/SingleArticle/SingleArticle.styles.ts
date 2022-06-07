@@ -19,6 +19,13 @@ const ArticleCard = styled.div<CardProps>`
     cursor: pointer;
     background-color: ${(props) => props.theme.tertiary};
   }
+
+  //for mobile
+  @media (max-width: 785px) {
+    flex-direction: column;
+    min-height: 450px;
+    text-align: center;
+  }
 `
 
 const Content = styled.div`
@@ -26,9 +33,10 @@ const Content = styled.div`
   flex-direction: column;
   margin-right: 80px;
   //for mobile
-  @media (max-width: 600px) {
+  @media (max-width: 785px) {
     flex-direction: column;
     color: ${(props) => props.theme.fontColor};
+    margin-right: 0;
   }
 `
 
@@ -41,8 +49,12 @@ const Subtitle = styled.p`
   //for desktop
   color: ${(props) => props.theme.light};
 
-  @media (min-width: 600px) {
+  @media (min-width: 785px) {
     padding-right: 280px;
+  }
+
+  @media (max-width: 785px) {
+    padding-right: 0px;
   }
 `
 
@@ -56,14 +68,34 @@ const Date = styled.p`
   position: absolute;
   bottom: 0;
   color: ${(props) => props.theme.light};
+
+  @media (max-width: 785px) {
+    position: relative;
+  }
 `
 
 const Image = styled.img`
   position: absolute;
   right: 0px;
-  top: 0px;
+  top: 0;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 785px) {
+    position: relative;
+    justify-content: center;
+  }
 `
 
-export { Title, Subtitle, ArticleType, ArticleCard, Date, Image, Content }
+const ImageContainer = styled.div``
+
+export {
+  Title,
+  Subtitle,
+  ArticleType,
+  ArticleCard,
+  Date,
+  Image,
+  Content,
+  ImageContainer,
+}
