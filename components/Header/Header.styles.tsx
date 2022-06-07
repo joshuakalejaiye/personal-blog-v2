@@ -21,6 +21,10 @@ const NavItem = styled.a`
   letter-spacing: 3px;
   color: ${(props) => props.theme.fontColor};
 
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
+
   @media (min-width: 660px) {
     font-size: 14px;
   }
