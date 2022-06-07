@@ -31,9 +31,9 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
       }}
     >
       <Styled.Content>
-        <Styled.Title>{title}</Styled.Title>
-        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+        <Styled.Title>{title}</Styled.Title>{" "}
         <Styled.ArticleType>{articleType}</Styled.ArticleType>
+        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
         <Styled.Date>{String(date)}</Styled.Date>
       </Styled.Content>
       {/* TODO: "add this when api response is added" */}

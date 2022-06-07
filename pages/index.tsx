@@ -1,4 +1,4 @@
-import Image from "next/image"
+import NextImage from "next/image"
 import styled from "styled-components"
 import { Button } from "../components/Button"
 import Layout from "../components/Layout/Layout"
@@ -20,19 +20,20 @@ const StyledDetails = styled.div`
   margin: 50px;
 
   @media (max-width: 1000px) {
+    margin: 0;
+    margin-bottom: 50px;
     max-width: 100%;
   }
 `
 
 const Home = () => {
-  const pageTitle = `Home - ${websiteName}`
+  const pageTitle = `${websiteName} - Software Engineer`
   const ghLink: string = "http://www.github.com/joshuakalejaiye"
   const mailLink: string = "mailto:joshua.s.kalejaiye@gmail.com"
 
   return (
     <Layout flex title={pageTitle}>
       <LandingContainer id="home">
-        <Image className="portrait" src={selfie} alt="myself" />
         <StyledDetails>
           <h1>Welcome!</h1>
           <p>
@@ -59,6 +60,7 @@ const Home = () => {
             </Button>
           </div>
         </StyledDetails>
+        <NextImage src={selfie} alt="myself" />
       </LandingContainer>
     </Layout>
   )

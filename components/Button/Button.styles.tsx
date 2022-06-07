@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import NextLink from "next/link"
+import { lightTheme } from "../../styles/themes"
 
 interface Props {
   reverse?: boolean
@@ -11,10 +12,10 @@ const InnerButton = styled.button<Props>`
   width: 100px;
   height: 35px;
   border: none;
-  color: #0e0e0e;
-  background-color: white;
-  border-radius: 1px;
-  box-shadow: inset 0 0 0 0 #0e0e0e;
+  color: ${(props) => props.theme.fontColor};
+  background-color: ${(props) => props.theme.secondary};
+  box-shadow: inset 0 0 0 0
+    ${(props) => (props.theme === lightTheme ? `black` : props.theme.accent)};
   transition: ease-out 0.3s;
   font-size: 13px;
   outline: none;
@@ -22,16 +23,20 @@ const InnerButton = styled.button<Props>`
   letter-spacing: 3px;
   text-align: center;
   font-family: Montserrat;
-  border: 1px solid gray;
+  ${(props) => (props.theme === lightTheme ? `border: 1px solid gray;` : ``)}
 
   &:hover {
     ${(props) =>
       props.reverse
-        ? `box-shadow: inset -100px 0 0 0 #0e0e0e; `
-        : `box-shadow: inset 100px 0 0 0 #0e0e0e;`}
+        ? `box-shadow: inset -100px 0 0 0 ${
+            props.theme === lightTheme ? `black` : props.theme.accent
+          } `
+        : `box-shadow: inset 100px 0 0 0 ${
+            props.theme === lightTheme ? `black` : props.theme.accent
+          }`};
     transition: ease-out 0.4s;
-    color: white;
     font-weight: light;
+    color: white;
     cursor: pointer;
   }
 `

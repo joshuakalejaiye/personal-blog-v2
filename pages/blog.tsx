@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react"
+import React, { FC, useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 import Layout from "../components/Layout/Layout"
 // import SearchBar from "../components/SearchBar/SearchBar"
@@ -22,8 +22,12 @@ const Blog: FC = () => {
   // const [data, status] = useArticles()
   const articleData: ArticleData[] = articleJSON
   const status = "success"
-  const data = Object.fromEntries(
-    articleData.map((article) => [article.articleString, article]),
+  const data = useMemo(
+    () =>
+      Object.fromEntries(
+        articleData.map((article) => [article.articleString, article]),
+      ),
+    [articleData],
   )
 
   const [dataSource, setDataSource] = useState(data)

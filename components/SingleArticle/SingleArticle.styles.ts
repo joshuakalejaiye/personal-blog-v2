@@ -6,19 +6,19 @@ export interface CardProps {
 
 const ArticleCard = styled.div<CardProps>`
   position: relative;
-
   display: flex;
   flex-direction: row;
-  border: 1px solid #e6e6e6;
+  border: 1px solid ${(props) => props.theme.tertiary};
   border-radius: 4px;
   padding: 5px 15px;
   margin-bottom: 15px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.secondary};
   min-height: ${(props) => props.height + 1}px;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 0px 0px 3px #e0e0e0;
+    background-color: ${(props) => props.theme.tertiary};
+    transform: scale(1.01);
   }
 `
 
@@ -29,22 +29,35 @@ const Content = styled.div`
   //for mobile
   @media (max-width: 600px) {
     flex-direction: column;
-    color: red;
+    color: ${(props) => props.theme.fontColor};
   }
 `
 
-const Title = styled.h2``
+const Title = styled.h2`
+  color: ${(props) => props.theme.accent};
+  margin-bottom: 2px;
+`
 
 const Subtitle = styled.p`
   //for desktop
+  color: ${(props) => props.theme.light};
+
   @media (min-width: 600px) {
     padding-right: 280px;
   }
 `
 
-const ArticleType = styled.p``
+const ArticleType = styled.p`
+  color: ${(props) => props.theme.accent};
+  margin: 0;
+  font-style: italic;
+`
 
-const Date = styled.p``
+const Date = styled.p`
+  position: absolute;
+  bottom: 0;
+  color: ${(props) => props.theme.light};
+`
 
 const Image = styled.img`
   position: absolute;

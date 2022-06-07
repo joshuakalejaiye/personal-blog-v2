@@ -2,6 +2,10 @@ import React, { FC } from "react"
 import { routes } from "../../site-details"
 import * as Styled from "./Header.styles"
 
+interface HeaderProps {
+  onChangeTheme: () => void
+}
+
 interface NavItemProps {
   route: string
 }
@@ -20,22 +24,17 @@ const NavItem: FC<NavItemProps> = ({ route }) => {
   })
 }
 
-const Header: FC = () => (
+const Header: FC<HeaderProps> = ({ onChangeTheme }) => (
   <Styled.NavBar>
     <Styled.DesktopNav>
-      <Styled.Logo>
-        <Styled.InnerLogo />
-      </Styled.Logo>
       <div>
         {Object.values(routes).map((route) => (
           <NavItem key={route} route={route} />
         ))}
       </div>
+      <Styled.ThemeToggleButton onClick={onChangeTheme} />
     </Styled.DesktopNav>
     <Styled.MobileNav>
-      <Styled.Logo>
-        <Styled.InnerLogo />
-      </Styled.Logo>
       <div>
         {Object.values(routes).map((route) => (
           <NavItem key={route} route={route} />

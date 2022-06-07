@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { createStore } from "redux"
 import { Provider as ReduxProvider } from "react-redux"
-import "../styles/globals.css"
+
 // eslint-disable-next-line import/no-named-as-default
 import rootReducer from "../reducers/rootReducers"
 

@@ -7,7 +7,7 @@ const Footer = styled.footer`
   padding: 30px 0;
   margin-top: 60px;
   color: #777;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid ${(props) => props.theme.tertiary};
 `
 
 const FooterNavItem = styled(Link)``
