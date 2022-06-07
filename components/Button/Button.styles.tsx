@@ -25,19 +25,29 @@ const InnerButton = styled.button<Props>`
   font-family: Montserrat;
   ${(props) => (props.theme === lightTheme ? `border: 1px solid gray;` : ``)}
 
-  &:hover {
-    ${(props) =>
-      props.reverse
-        ? `box-shadow: inset -100px 0 0 0 ${
-            props.theme === lightTheme ? `black` : props.theme.accent
-          } `
-        : `box-shadow: inset 100px 0 0 0 ${
-            props.theme === lightTheme ? `black` : props.theme.accent
-          }`};
-    transition: ease-out 0.4s;
-    font-weight: light;
-    color: white;
-    cursor: pointer;
+  @media (min-width: 500px) {
+    &:hover {
+      ${(props) =>
+        props.reverse
+          ? `box-shadow: inset -100px 0 0 0 ${
+              props.theme === lightTheme ? `black` : props.theme.accent
+            } `
+          : `box-shadow: inset 100px 0 0 0 ${
+              props.theme === lightTheme ? `black` : props.theme.accent
+            }`};
+      transition: ease-out 0.4s;
+      font-weight: light;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &:active {
+      background-color: ${(props) => props.theme.accent};
+      color: white;
+      cursor: pointer;
+    }
   }
 `
 
