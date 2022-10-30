@@ -14,7 +14,7 @@ const ProjectPost = () => {
   return (
     <Layout title={pageTitle}>
       <FullPost data={postData} type={postType} />
-      <Button route={postData.links[0]} newTab>
+      <Button route={postData?.links[0]} newTab>
         GITHUB REPO
       </Button>
     </Layout>
