@@ -65,10 +65,9 @@ const Home = () => {
             fast-paced environment, I have experience working directly with
             stakeholders and using the requirements gathered to deliver high
             quality production ready solutions. I have a clear understanding of
-            React, JavaScript and have experiene working with Java and other
+            React, JavaScript and have experience working with Java and other
             languages commonly used on the backend. I&apos;m highly motivated to
-            learn, grow and excel in the Tech. Here you&apos;ll find a few of my
-            projects and multiple ways to reach me.
+            learn, grow and excel in Tech. You can get in touch below:
           </p>
           <div
             id="buttons"
