@@ -21,7 +21,7 @@ const Layout: FC<LayoutProps> = ({
   flexDirection = "column",
   minHeight,
 }) => {
-  const [theme, setTheme] = useLocalStorage("light", true)
+  const [theme, setTheme] = useLocalStorage("dark", false)
 
   const onChangeTheme = () => {
     // setTheme((currentTheme) => !currentTheme)
