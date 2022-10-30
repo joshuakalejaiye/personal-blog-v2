@@ -24,7 +24,8 @@ const Layout: FC<LayoutProps> = ({
   const [theme, setTheme] = useLocalStorage("light", true)
 
   const onChangeTheme = () => {
-    setTheme((currentTheme) => !currentTheme)
+    // setTheme((currentTheme) => !currentTheme)
+    setTheme((currentTheme) => currentTheme)
   }
 
   return (

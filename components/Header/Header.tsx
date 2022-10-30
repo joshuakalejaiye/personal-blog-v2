@@ -39,7 +39,7 @@ const Header: FC<HeaderProps> = ({ onChangeTheme }) => (
           <Styled.NavItem>GitHub</Styled.NavItem>
         </a>
       </div>
-      {/* <Styled.ThemeToggleButton onClick={onChangeTheme} /> */}
+      <Styled.ThemeToggleButton onClick={onChangeTheme} />
     </Styled.DesktopNav>
     <Styled.MobileNav>
       <div>
