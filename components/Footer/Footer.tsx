@@ -4,10 +4,15 @@ import * as Styled from "./Footer.styles"
 
 interface FooterProps {}
 
-const Footer: FC<FooterProps> = () => (
-  <Styled.Footer>
-    <p>Copyright 2022 - {websiteName}</p>
-  </Styled.Footer>
-)
+const Footer: FC<FooterProps> = () => {
+  const currentYear = new Date().getFullYear()
+  return (
+    <Styled.Footer>
+      <p>
+        © {currentYear} - {websiteName}
+      </p>
+    </Styled.Footer>
+  )
+}
 
 export default Footer

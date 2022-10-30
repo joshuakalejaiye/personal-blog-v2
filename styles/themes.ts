@@ -26,7 +26,7 @@ export const darkTheme: ThemeType = {
   light: "#939393",
   fontColor: "#d8e1ed",
   btnFontColor: "#282828",
-  accent: "#8474cc",
+  accent: "#3dffc5",
 }
 
 export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>` 
@@ -41,7 +41,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
 
   body {
     font-size: 15px;
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Barlow', sans-serif;
     margin: 0;
     padding: 0;
     background-color: ${(props) => props.theme.primary};

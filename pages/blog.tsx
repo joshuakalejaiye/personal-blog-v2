@@ -52,6 +52,7 @@ const Blog: FC = () => {
             {dataSource &&
               Object.keys(dataSource).map((article) => (
                 <SingleArticle
+                  type="BLOG"
                   key={dataSource[article].articleString}
                   articleData={dataSource[article]}
                 />

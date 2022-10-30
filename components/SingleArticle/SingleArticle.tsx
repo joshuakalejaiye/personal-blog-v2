@@ -1,16 +1,16 @@
 import { useRouter } from "next/router"
 import React, { FunctionComponent, useEffect, useState } from "react"
 import { ArticleData } from "../../ArticleData"
-
-import { routes } from "../../site-details"
 import * as Styled from "./SingleArticle.styles"
 
 interface SingleArticleProps {
   articleData: ArticleData
+  type: string
 }
 
 const SingleArticle: FunctionComponent<SingleArticleProps> = ({
   articleData,
+  type,
 }) => {
   const router = useRouter()
 
@@ -46,11 +46,19 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
       height={cardHeight}
       role="button"
       onClick={() => {
-        router.push(`${routes.Blog}/${articleString}`)
+        router.push(
+          type === "PROJECT"
+            ? `projects/${articleString}`
+            : `blog/${articleString}`,
+        )
       }}
       tabIndex={0}
       onKeyDown={() => {
-        router.push(`${routes.Blog}/${articleString}`)
+        router.push(
+          type === "PROJECT"
+            ? `projects/${articleString}`
+            : `blog/${articleString}`,
+        )
       }}
     >
       <Styled.Content>

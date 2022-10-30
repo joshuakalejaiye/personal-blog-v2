@@ -9,7 +9,7 @@ interface Props {
 
 const InnerButton = styled.button<Props>`
   margin-top: 10px;
-  width: 100px;
+  min-width: 100px;
   height: 35px;
   border: none;
   color: ${(props) => props.theme.fontColor};
@@ -20,22 +20,14 @@ const InnerButton = styled.button<Props>`
   font-size: 13px;
   outline: none;
   margin-right: 10px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-align: center;
-  font-family: Montserrat;
-  ${(props) => (props.theme === lightTheme ? `border: 1px solid gray;` : ``)}
-
+  font-family: ;
+  border-left: 1px solid ${(props) => props.theme.primary};
+  padding: 0 10px;
   @media (min-width: 500px) {
     &:hover {
-      ${(props) =>
-        props.reverse
-          ? `box-shadow: inset -100px 0 0 0 ${
-              props.theme === lightTheme ? `black` : props.theme.accent
-            } `
-          : `box-shadow: inset 100px 0 0 0 ${
-              props.theme === lightTheme ? `black` : props.theme.accent
-            }`};
-      transition: ease-out 0.4s;
+      border-left: 1px solid ${(props) => props.theme.accent};
       font-weight: light;
       color: white;
       cursor: pointer;

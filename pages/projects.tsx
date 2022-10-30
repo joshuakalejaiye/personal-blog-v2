@@ -17,7 +17,7 @@ const StyledContainer = styled.div`
 const StyledLister = styled.div``
 
 const touchlessInterface = {
-  title: "Double Module Project",
+  title: "Gesture Controlled Self-Service Kiosk",
   subtitle:
     "Created a product ordering kiosk program similar to the ones found in KFC and McDonalds that allows for touchscreen and touch-less interaction using Machine Learning.",
   content:
@@ -44,6 +44,7 @@ const Projects: FC<ContactProps> = () => {
           {allProjects &&
             Object.keys(allProjects).map((article) => (
               <SingleArticle
+                type="PROJECT"
                 key={allProjects[article].articleString}
                 articleData={allProjects[article]}
               />

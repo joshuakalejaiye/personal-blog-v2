@@ -12,6 +12,8 @@ const Content = styled.div<ContentProps>`
   ${(props) => props.minHeight && `min-height: ${props.minHeight}px`}
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
+  padding: 100px;
   ${(props) => {
     if (props.flex) {
       return ` display: flex;
@@ -19,8 +21,11 @@ const Content = styled.div<ContentProps>`
     }
     return ""
   }}
+
+  min-height: calc(95vh - 70px);
+
   @media (max-width: 1000px) {
-    padding: 40px;
+    padding: 100px;
   }
 `
 

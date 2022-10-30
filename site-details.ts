@@ -1,9 +1,8 @@
 const websiteName = "Joshua Kalejaiye"
 export const routes = {
   Home: "/",
-  Blog: "/blog",
   Projects: "/projects",
-  Contact: "/contact",
+  // About: "/about",
 }
 
 export default websiteName

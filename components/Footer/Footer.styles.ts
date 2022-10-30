@@ -4,10 +4,15 @@ import styled from "styled-components"
 const Footer = styled.footer`
   display: block;
   text-align: center;
-  padding: 30px 0;
-  margin-top: 60px;
+  height: 50px;
+  margin-top: 20px;
   color: #777;
   border-top: 1px solid ${(props) => props.theme.tertiary};
+
+  p {
+    margin: 0;
+    margin-top: 15px;
+  }
 `
 
 const FooterNavItem = styled(Link)``

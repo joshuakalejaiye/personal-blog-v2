@@ -1,6 +1,7 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import Head from "next/head"
 import { ThemeProvider } from "styled-components"
+import { useLocalStorage } from "usehooks-ts"
 import Footer from "../Footer/Footer"
 import Header from "../Header/Header"
 import * as Styled from "./Layout.styles"
@@ -20,14 +21,14 @@ const Layout: FC<LayoutProps> = ({
   flexDirection = "column",
   minHeight,
 }) => {
-  const [theme, setTheme] = useState<string>("dark")
+  const [theme, setTheme] = useLocalStorage("light", true)
 
   const onChangeTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
+    setTheme((currentTheme) => !currentTheme)
   }
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <GlobalStyles />
       <div className="layout">
         <Head>

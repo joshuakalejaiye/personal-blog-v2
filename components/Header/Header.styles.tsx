@@ -4,11 +4,14 @@ import styled from "styled-components"
 const NavBar = styled.nav`
   background-color: ${(props) => props.theme.secondary};
   display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 1px solid ${(props) => props.theme.tertiary};
   margin-bottom: 50px;
-
+  z-index: 99999;
   @media (max-width: 660px) {
     flex-direction: column;
     margin-bottom: 10px;
@@ -17,8 +20,7 @@ const NavBar = styled.nav`
 const NavItem = styled.a`
   margin: 0 10px;
   font-size: 12.5px;
-  font-family: Montserrat;
-  letter-spacing: 3px;
+  font-family: Barlow;
   color: ${(props) => props.theme.fontColor};
 
   &:hover {

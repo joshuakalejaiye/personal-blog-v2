@@ -26,6 +26,16 @@ const MyApp: FC<MyAppProps> = ({ Component, pageProps }) => {
       }),
   )
 
+  // fixes broken SSR and theme interaction
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // prevents ssr flash for mismatched dark mode
+  if (!mounted) return null
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReduxProvider store={store}>
