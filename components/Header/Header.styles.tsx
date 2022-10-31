@@ -12,6 +12,7 @@ const NavBar = styled.nav`
   border-bottom: 1px solid ${(props) => props.theme.tertiary};
   margin-bottom: 50px;
   z-index: 99999;
+
   @media (max-width: 660px) {
     flex-direction: column;
     margin-bottom: 10px;
@@ -76,6 +77,8 @@ const DesktopNav = styled(UnifiedNav)`
   }
 `
 const MobileNav = styled(UnifiedNav)`
+  height: 30px;
+
   @media (min-width: 660px) {
     display: none;
   }

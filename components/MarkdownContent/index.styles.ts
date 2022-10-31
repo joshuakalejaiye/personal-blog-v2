@@ -18,8 +18,18 @@ export const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+
+  div {
+    position: unset !important;
+  }
+
   ${NextImage} {
     margin-top: 0px;
+    object-fit: contain;
+    width: 100% !important;
+    height: unset !important;
   }
 `
 
@@ -28,6 +38,11 @@ export const Caption = styled.div`
   margin-top: 5px;
   font-style: italic;
   margin-bottom: 20px;
+
+  @media (max-width: 750px) {
+    margin-top: -10px;
+    margin-bottom: 0px;
+  }
 `
 
 export const MarkdownContentWrapper = styled.div`

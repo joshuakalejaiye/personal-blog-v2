@@ -12,9 +12,9 @@ export default {
 
 I created a product ordering kiosk program similar to the ones found in KFC and McDonald's that allows for touchscreen *and* touch-less interaction. It uses an object detection model to detect a user's hand. Users can hold their hand in front of the screen and a cursor will mirror their movements, if the user holds the cursor over a button for an extended amount of time, this triggers a selection. The program was developed with React, Node.js, Electron, PostgreSQL etc. This is a shortened version of my [full report]("https://github.com/joshuakalejaiye/gesture-kiosk-electron"), and will explain a bit about how I developed this project.
 
-![img {350x500} {caption: Cursor about to select an item}](${cursorShowcase.src})
+![img {632x540} {caption: Cursor about to select an item}](${cursorShowcase.src})
 
-![img {350x450} {caption: Adding items to basket}](${kioskImage.src})
+![img {632x490} {caption: Adding items to basket}](${kioskImage.src})
 
 # System Design
 ![img {632x620} {caption: Web App Structure}](${currentSystemDesign.src})  

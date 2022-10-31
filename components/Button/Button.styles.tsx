@@ -22,12 +22,12 @@ const InnerButton = styled.button<Props>`
   margin-right: 10px;
   letter-spacing: 2px;
   text-align: center;
-  font-family: ;
-  border-left: 1px solid ${(props) => props.theme.primary};
+  font-family: Barlow;
+  border-left: 2px solid ${(props) => props.theme.primary};
   padding: 0 10px;
   @media (min-width: 500px) {
     &:hover {
-      border-left: 1px solid ${(props) => props.theme.accent};
+      border-left: 2px solid ${(props) => props.theme.accent};
       font-weight: light;
       color: white;
       cursor: pointer;

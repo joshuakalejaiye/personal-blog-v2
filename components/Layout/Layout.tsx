@@ -31,7 +31,7 @@ const Layout: FC<LayoutProps> = ({
   return (
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <div className="layout">
+      <Styled.Layout>
         <Head>
           <title>{title}</title>
           <link rel="icon" href="/favicon.ico" />
@@ -46,7 +46,7 @@ const Layout: FC<LayoutProps> = ({
           {children}
         </Styled.Content>
         <Footer />
-      </div>
+      </Styled.Layout>
     </ThemeProvider>
   )
 }

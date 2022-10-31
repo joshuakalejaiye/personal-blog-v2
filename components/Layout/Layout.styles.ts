@@ -6,6 +6,12 @@ interface ContentProps {
   minHeight?: number
 }
 
+export const Layout = styled.div`
+  @media (max-width: 1000px) {
+    width: 110vw;
+  }
+`
+
 const Content = styled.div<ContentProps>`
   max-width: 960px; // 960px = 100% of the width of the content
   margin: 0 auto; // no top and bottom margin, but equal left and right margin
@@ -25,7 +31,7 @@ const Content = styled.div<ContentProps>`
   min-height: calc(95vh - 70px);
 
   @media (max-width: 1000px) {
-    padding: 100px;
+    padding: 50px 50px 10px 50px;
   }
 `
 

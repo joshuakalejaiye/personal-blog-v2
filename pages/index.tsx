@@ -13,6 +13,7 @@ const LandingContainer = styled.div`
 
   @media (max-width: 1000px) {
     flex-direction: column;
+    margin-top: -85px;
   }
 `
 
@@ -24,6 +25,7 @@ const StyledDetails = styled.div`
     margin: 0;
     margin-bottom: 50px;
     max-width: 100%;
+    padding: 50px;
   }
 `
 
@@ -35,7 +37,7 @@ const ImageCropper = styled.div`
   min-width: 380px;
   min-height: 300px;
   scale: 1.2;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 
   img {
     margin-top: -60px !important;
