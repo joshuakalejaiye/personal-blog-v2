@@ -7,6 +7,7 @@ const NavBar = styled.nav`
   display: flex;
   position: fixed;
   top: 0;
+  margin-top: 10px;
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
