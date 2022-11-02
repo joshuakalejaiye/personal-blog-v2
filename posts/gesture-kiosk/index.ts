@@ -7,6 +7,8 @@ import cursorShowcase from "../../public/images/cursorShowcase.png"
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: "Gesture Controlled Self-Service Kiosk",
+  preview:
+    "I created a product ordering kiosk program similar to the ones found in KFC and McDonald's that allows for touchscreen and touch-less interaction. It uses an object detection model to ...",
   content: `# Gesture Controlled Self-Service Kiosk
 ###   Exploring Post-COVID Natural Interfaces
 

@@ -17,7 +17,7 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
   const {
     title,
     articleString,
-    subtitle,
+    preview,
     articleType,
     date,
     banner,
@@ -64,7 +64,7 @@ const SingleArticle: FunctionComponent<SingleArticleProps> = ({
       <Styled.Content>
         <Styled.Title>{title}</Styled.Title>{" "}
         <Styled.ArticleType>{articleType}</Styled.ArticleType>
-        <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+        <Styled.Subtitle>{preview}</Styled.Subtitle>
         <Styled.Date>{String(date)}</Styled.Date>
       </Styled.Content>
       <Styled.ImageContainer>

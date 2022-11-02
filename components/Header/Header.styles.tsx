@@ -1,64 +1,84 @@
 import NextLink from "next/link"
 import styled from "styled-components"
+import { darkTheme, lightTheme } from "../../styles/themes"
 
 const NavBar = styled.nav`
-  background-color: ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.primary};
   display: flex;
   position: fixed;
   top: 0;
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  border-bottom: 1px solid ${(props) => props.theme.tertiary};
   margin-bottom: 50px;
   z-index: 99999;
+  height: 65px;
 
   @media (max-width: 660px) {
     flex-direction: column;
     margin-bottom: 10px;
   }
 `
-const NavItem = styled.a`
+
+const NavItem = styled.a<{ active?: boolean }>`
   margin: 0 10px;
   font-size: 12.5px;
   font-family: Barlow;
   color: ${(props) => props.theme.fontColor};
+  padding: 9px 15px 11px 15px;
+  border-radius: 30px;
+  user-select: none;
+  ${({ theme, active }) =>
+    active && `background-color: ${theme.accent}; color: ${theme.primary};`}
 
   &:hover {
-    color: ${(props) => props.theme.accent};
+    background-color: ${(props) => !props.active && props.theme.tertiary};
+    transition: ease 0.2s;
   }
 
   @media (min-width: 660px) {
     font-size: 17px;
   }
 `
-
-const ThemeToggleButton = styled.div`
-  background-color: ${(props) => props.theme.secondary};
-  width: 25px;
-  height: 24px;
-  border-radius: 100%;
-  cursor: pointer;
-  border: 1.5px solid ${(props) => props.theme.fontColor};
-  display: block;
+export const GitHubLink = styled(NavItem)`
   position: absolute;
   right: 0;
-  margin-right: 20px;
+  top: 0;
+  margin: 14px;
+  padding: 5px 9px;
 
-  &:hover {
-    ${(props) => `
-    box-shadow: inset -100px 0 0 0 ${props.theme.fontColor};
-    transition: ease-out 0.4s;
-    font-weight: light;
-    border: 0;
-    color: ${props.theme.fontColor};
-    `}
+  svg {
+    transform: translate(0px, 2px);
+    ${({ theme }) => theme === darkTheme && `filter: brightness(0) invert(1);`}
   }
 `
 
-const NavLink = ({ href, name }) => (
+const ThemeToggleButton = styled.div`
+  min-width: 50px;
+  min-height: 25px;
+  background-color: ${({ theme }) => theme.accent};
+  border-radius: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 70px;
+  margin-top: 20px;
+`
+
+export const InnerToggle = styled.div`
+  width: 22px;
+  height: 22px;
+  margin: 3px 3px 2px 3px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.primary};
+
+  ${({ theme }) =>
+    theme === lightTheme && `float: right; transition: ease 0.3s; `}
+`
+
+const NavLink = ({ href, name, active }) => (
   <NextLink href={href} passHref>
-    <NavItem>{name}</NavItem>
+    <NavItem active={active}>{name}</NavItem>
   </NextLink>
 )
 
@@ -77,8 +97,6 @@ const DesktopNav = styled(UnifiedNav)`
   }
 `
 const MobileNav = styled(UnifiedNav)`
-  height: 30px;
-
   @media (min-width: 660px) {
     display: none;
   }

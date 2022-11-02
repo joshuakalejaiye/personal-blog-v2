@@ -5,18 +5,24 @@ interface ThemeType {
   secondary: string
   tertiary: string
   fontColor: string
+  secondaryFontColor: string
   btnFontColor: string
   accent: string
   light?: string
+  btnHover: string
+  hoverFontColor: string
 }
 
 export const lightTheme: ThemeType = {
-  primary: "#fff",
-  secondary: "#fff",
-  tertiary: "#e6e6e6",
+  primary: "#fbfafb",
+  secondary: "#f6f6f6",
+  tertiary: "#ffffff",
+  secondaryFontColor: "#939393",
   fontColor: "#000",
-  btnFontColor: "#000a12",
-  accent: "#000",
+  hoverFontColor: "#ffffff",
+  btnFontColor: "#000000",
+  btnHover: "#000000",
+  accent: "#ff6363",
 }
 
 export const darkTheme: ThemeType = {
@@ -25,7 +31,10 @@ export const darkTheme: ThemeType = {
   tertiary: "#282828",
   light: "#939393",
   fontColor: "#d8e1ed",
-  btnFontColor: "#282828",
+  secondaryFontColor: "#d8e1ed",
+  btnFontColor: "#fff",
+  btnHover: "#ffffff",
+  hoverFontColor: "#ffffff",
   accent: "#3dffc5",
 }
 
@@ -39,6 +48,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
     }
   }
 
+  article{ flex:1; }
+  
   body {
     font-size: 15px;
     font-family: 'Barlow', sans-serif;

@@ -4,11 +4,13 @@ interface ContentProps {
   flex?: boolean
   flexDirection: string
   minHeight?: number
+  marginBottom?: number
 }
 
 export const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
   @media (max-width: 1000px) {
-    width: 110vw;
   }
 `
 
@@ -20,6 +22,8 @@ const Content = styled.div<ContentProps>`
   justify-content: center;
   margin-top: 50px;
   padding: 100px;
+  margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}px;
+
   ${(props) => {
     if (props.flex) {
       return ` display: flex;
@@ -28,7 +32,7 @@ const Content = styled.div<ContentProps>`
     return ""
   }}
 
-  min-height: calc(95vh - 70px);
+  min-height: 100vh;
 
   @media (max-width: 1000px) {
     padding: 50px 50px 10px 50px;
