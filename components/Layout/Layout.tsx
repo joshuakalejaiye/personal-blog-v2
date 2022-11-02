@@ -12,6 +12,7 @@ interface LayoutProps {
   flex?: boolean
   flexDirection?: string
   minHeight?: number
+  marginBottom?: number
 }
 
 const Layout: FC<LayoutProps> = ({
@@ -20,12 +21,12 @@ const Layout: FC<LayoutProps> = ({
   flex = false,
   flexDirection = "column",
   minHeight,
+  marginBottom,
 }) => {
   const [theme, setTheme] = useLocalStorage("dark", false)
 
   const onChangeTheme = () => {
-    // setTheme((currentTheme) => !currentTheme)
-    setTheme((currentTheme) => currentTheme)
+    setTheme((currentTheme) => !currentTheme)
   }
 
   return (
@@ -42,6 +43,7 @@ const Layout: FC<LayoutProps> = ({
           flex={flex}
           flexDirection={flexDirection}
           minHeight={minHeight}
+          marginBottom={marginBottom}
         >
           {children}
         </Styled.Content>

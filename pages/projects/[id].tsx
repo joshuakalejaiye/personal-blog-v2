@@ -12,10 +12,10 @@ const ProjectPost = () => {
   const pageTitle = `${postData?.title} - ${postType?.toUpperCase()}`
 
   return (
-    <Layout title={pageTitle}>
+    <Layout marginBottom={40} title={pageTitle}>
       <FullPost data={postData} type={postType} />
       <Button route={postData?.links[0]} newTab>
-        GITHUB REPO
+        GitHub Repo
       </Button>
     </Layout>
   )

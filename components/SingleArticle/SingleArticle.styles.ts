@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { lightTheme } from "../../styles/themes"
 
 export interface CardProps {
   height: number
@@ -11,13 +12,21 @@ const ArticleCard = styled.div<CardProps>`
   border-radius: 4px;
   padding: 5px 15px;
   margin-bottom: 15px;
-  background-color: ${(props) => props.theme.secondary};
-  min-height: ${(props) => props.height + 2}px;
-  border-left: 2px solid ${(props) => props.theme.primary};
+  min-height: ${({ height }) => height + 4}px;
+  border: 2px solid ${({ theme }) => theme.secondary};
+  border-radius: 10px;
+  ${({ theme }) =>
+    theme === lightTheme && `background-color: ${theme.tertiary}; `}
+
+  h2, p {
+    margin-left: 10px;
+  }
 
   &:hover {
+    border-radius: 20px;
+    border-left: 2px solid ${({ theme }) => theme.accent};
+    border-radius: 0px;
     cursor: pointer;
-    border-left: 2px solid ${(props) => props.theme.accent};
   }
 
   //for mobile
@@ -35,14 +44,14 @@ const Content = styled.div`
   //for mobile
   @media (max-width: 750px) {
     flex-direction: column;
-    color: ${(props) => props.theme.fontColor};
+    color: ${({ theme }) => theme.fontColor};
     margin-right: 0;
   }
 `
 
 const Title = styled.h2`
-  color: ${(props) => props.theme.accent};
-  margin-bottom: 2px;
+  color: ${({ theme }) => theme.fontColor};
+  margin: 8px 12px 4px 10px;
 
   @media (min-width: 750px) {
     padding-right: 280px;
@@ -54,11 +63,11 @@ const Title = styled.h2`
 `
 
 const Subtitle = styled.p`
-  //for desktop
-  color: ${(props) => props.theme.light};
+  color: ${({ theme }) => theme.light};
+  margin-top: 10px;
   padding-bottom: 10px;
   @media (min-width: 750px) {
-    padding-right: 280px;
+    padding-right: 310px;
   }
 
   @media (max-width: 750px) {
@@ -67,7 +76,7 @@ const Subtitle = styled.p`
 `
 
 const ArticleType = styled.p`
-  color: ${(props) => props.theme.accent};
+  color: ${({ theme }) => theme.accent};
   margin: 0;
   font-style: italic;
 `
@@ -75,7 +84,9 @@ const ArticleType = styled.p`
 const Date = styled.p`
   position: absolute;
   bottom: 0;
-  color: ${(props) => props.theme.light};
+  margin-bottom: 15px;
+
+  color: ${({ theme }) => theme.fontColor};
 
   @media (max-width: 750px) {
     position: relative;

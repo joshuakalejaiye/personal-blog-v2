@@ -1,6 +1,6 @@
 export interface ArticleData {
   title: string
-  subtitle: string
+  preview: string
   date: string
   articleType: string
   content: string
@@ -14,20 +14,3 @@ export interface ArticleData {
   banner?: any
   bannerAltText?: string
 }
-// {
-//   title: string
-//   subtitle: string
-//   date: Date
-//   articleType: ArticleType
-//   content: string
-//   mediaDetails: {
-//     mediaId: string
-//     mediaType: MediaType
-//     movieTvResponse: MovieTvData
-//     gameResponse: {
-//     }
-//   }
-//   articleString: string
-//   banner: string
-//   bannerAltText: string
-// }

@@ -8,9 +8,9 @@ const Footer: FC<FooterProps> = () => {
   const currentYear = new Date().getFullYear()
   return (
     <Styled.Footer>
-      <p>
+      <Styled.FooterNavItem>
         © {currentYear} - {websiteName}
-      </p>
+      </Styled.FooterNavItem>
     </Styled.Footer>
   )
 }

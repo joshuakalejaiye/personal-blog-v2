@@ -10,34 +10,36 @@ interface Props {
 const InnerButton = styled.button<Props>`
   margin-top: 10px;
   min-width: 100px;
-  height: 35px;
+  min-height: 20px;
   border: none;
-  color: ${(props) => props.theme.fontColor};
-  background-color: ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.tertiary};
   box-shadow: inset 0 0 0 0
     ${(props) => (props.theme === lightTheme ? `black` : props.theme.accent)};
-  transition: ease-out 0.3s;
-  font-size: 13px;
+  transition: ease-out 0.1s;
   outline: none;
   margin-right: 10px;
-  letter-spacing: 2px;
   text-align: center;
   font-family: Barlow;
-  border-left: 2px solid ${(props) => props.theme.primary};
-  padding: 0 10px;
+  padding: 9px 15px 10px 15px;
+  color: ${(props) => props.theme.btnFontColor};
+  user-select: none;
+  border-radius: 40px;
+  font-size: 16px;
+  border: 2px solid ${({ theme }) => theme.secondary};
+
   @media (min-width: 500px) {
     &:hover {
-      border-left: 2px solid ${(props) => props.theme.accent};
       font-weight: light;
-      color: white;
+      color: ${(props) => props.theme.primary};
       cursor: pointer;
+      background-color: ${(props) => props.theme.accent};
     }
   }
 
   @media (max-width: 500px) {
     &:active {
       background-color: ${(props) => props.theme.accent};
-      color: white;
+      color: ${(props) => props.theme.btnFontColor};
       cursor: pointer;
     }
   }

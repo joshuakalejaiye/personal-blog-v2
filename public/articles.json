@@ -1,7 +1,7 @@
 [
   {
     "title": "Lorem ipsum dolor sit amet",
-    "subtitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    "preview": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     "date": "December 17, 2021 13:24:00",
     "articleType": "TUTORIAL",
     "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
@@ -10,7 +10,7 @@
   },
   {
     "title": "Consectetur adipisicing elit",
-    "subtitle": "Consectetur adipisicing elit. Doloribus repellat accusantium magnam.",
+    "preview": "Consectetur adipisicing elit. Doloribus repellat accusantium magnam.",
     "date": "December 20, 2021 13:24:00",
     "articleType": "IMPRESSIONS",
     "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
@@ -19,7 +19,7 @@
   },
   {
     "title": "Dignissimos deserunt, quasi autem alias",
-    "subtitle": "Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
+    "preview": "Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
     "date": "December 24, 2021 13:24:00",
     "articleType": "TUTORIAL",
     "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repellat accusantium magnam. Dignissimos deserunt, quasi autem alias sed minus nostrum fugiat hic voluptatibus rem harum, distinctio delectus vero laudantium sit!",
