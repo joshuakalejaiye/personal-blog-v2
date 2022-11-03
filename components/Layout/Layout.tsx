@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import Head from "next/head"
 import { ThemeProvider } from "styled-components"
 import { useLocalStorage } from "usehooks-ts"
@@ -24,6 +24,7 @@ const Layout: FC<LayoutProps> = ({
   marginBottom,
 }) => {
   const [theme, setTheme] = useLocalStorage("dark", false)
+  const [shadeOpen, setShadeOpen] = useState<boolean>(false)
 
   const onChangeTheme = () => {
     setTheme((currentTheme) => !currentTheme)
@@ -38,12 +39,17 @@ const Layout: FC<LayoutProps> = ({
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Header onChangeTheme={onChangeTheme} />
+        <Header
+          onChangeTheme={onChangeTheme}
+          shadeOpen={shadeOpen}
+          toggleShade={() => setShadeOpen((open) => !open)}
+        />
         <Styled.Content
           flex={flex}
           flexDirection={flexDirection}
           minHeight={minHeight}
           marginBottom={marginBottom}
+          shadeOpen={shadeOpen}
         >
           {children}
         </Styled.Content>

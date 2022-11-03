@@ -5,6 +5,7 @@ interface ContentProps {
   flexDirection: string
   minHeight?: number
   marginBottom?: number
+  shadeOpen: boolean
 }
 
 export const Layout = styled.div`
@@ -15,7 +16,7 @@ export const Layout = styled.div`
 `
 
 const Content = styled.div<ContentProps>`
-  max-width: 960px; // 960px = 100% of the width of the content
+  max-width: 900px; // 960px = 100% of the width of the content
   margin: 0 auto; // no top and bottom margin, but equal left and right margin
   ${(props) => props.minHeight && `min-height: ${props.minHeight}px`}
   align-items: center;
@@ -23,6 +24,13 @@ const Content = styled.div<ContentProps>`
   margin-top: 50px;
   padding: 100px;
   margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}px;
+
+  ${({ shadeOpen }) => shadeOpen && `filter: blur(4px);`}
+
+  @media (max-width: 770px) {
+    max-width: unset;
+    padding: unset;
+  }
 
   ${(props) => {
     if (props.flex) {

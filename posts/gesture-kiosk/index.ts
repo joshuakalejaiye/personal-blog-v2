@@ -12,7 +12,7 @@ export default {
   content: `# Gesture Controlled Self-Service Kiosk
 ###   Exploring Post-COVID Natural Interfaces
 
-I created a product ordering kiosk program similar to the ones found in KFC and McDonald's that allows for touchscreen *and* touch-less interaction. It uses an object detection model to detect a user's hand. Users can hold their hand in front of the screen and a cursor will mirror their movements, if the user holds the cursor over a button for an extended amount of time, this triggers a selection. The program was developed with React, Node.js, Electron, PostgreSQL etc. This is a shortened version of my [full report]("https://github.com/joshuakalejaiye/gesture-kiosk-electron"), and will explain a bit about how I developed this project.
+I created a product ordering kiosk program similar to the ones found in KFC and McDonald's that allows for touchscreen *and* touch-less interaction. It uses an object detection model to detect a user's hand. Users can hold their hand in front of the screen and a cursor will mirror their movements, if the user holds the cursor over a button for an extended amount of time, this triggers a selection. The program was developed with React, Node.js, Electron, PostgreSQL etc. This is a shortened version of my [full report](https://github.com/joshuakalejaiye/gesture-kiosk-electron), and will explain a bit about how I developed this project.
 
 ![img {632x540} {caption: Cursor about to select an item}](${cursorShowcase.src})
 

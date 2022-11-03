@@ -2,20 +2,23 @@ import NextLink from "next/link"
 import styled from "styled-components"
 import { darkTheme, lightTheme } from "../../styles/themes"
 
+interface HamburgerProps {
+  shadeOpen: boolean
+}
+
 const NavBar = styled.nav`
   background-color: ${(props) => props.theme.primary};
   display: flex;
   position: fixed;
   top: 0;
-  margin-top: 10px;
   width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: flex-end;
   margin-bottom: 50px;
   z-index: 99999;
   height: 65px;
 
-  @media (max-width: 660px) {
+  @media (max-width: 770px) {
     flex-direction: column;
     margin-bottom: 10px;
   }
@@ -23,7 +26,8 @@ const NavBar = styled.nav`
 
 const NavItem = styled.a<{ active?: boolean }>`
   margin: 0 10px;
-  font-size: 12.5px;
+  margin-top: 10px;
+  font-size: 17px;
   font-family: Barlow;
   color: ${(props) => props.theme.fontColor};
   padding: 9px 15px 11px 15px;
@@ -36,10 +40,6 @@ const NavItem = styled.a<{ active?: boolean }>`
     background-color: ${(props) => !props.active && props.theme.tertiary};
     transition: ease 0.2s;
   }
-
-  @media (min-width: 660px) {
-    font-size: 17px;
-  }
 `
 export const GitHubLink = styled(NavItem)`
   position: absolute;
@@ -50,8 +50,113 @@ export const GitHubLink = styled(NavItem)`
 
   svg {
     transform: translate(0px, 2px);
-    ${({ theme }) => theme === darkTheme && `filter: brightness(0) invert(1);`}
+    ${({ theme }) =>
+      theme === darkTheme
+        ? `filter: invert(81%) sepia(69%) saturate(445%) hue-rotate(91deg) brightness(101%) contrast(103%);`
+        : `filter: invert(58%) sepia(32%) saturate(3045%) hue-rotate(320deg) brightness(97%) contrast(105%);
+`}
   }
+
+  @media (max-width: 770px) {
+    margin: 0;
+    scale: 1;
+    margin-top: 10px;
+    margin-left: 20px;
+    right: unset;
+    left: 0;
+  }
+`
+
+export const Hamburger = styled.div<HamburgerProps>`
+  width: 28px;
+  height: 28px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.accent};
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 27px;
+  margin-top: 14px;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background: none;
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.accent};
+  border-radius: 50%;
+  z-index: 1001;
+  scale: 0.9;
+`
+
+export const BurgerDot = styled.div<HamburgerProps>`
+  width: 2px;
+  height: 2px;
+  margin: 2px;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.accent};
+`
+
+export const BurgerShade = styled.div<HamburgerProps>`
+  width: 72vw;
+  height: 2160px;
+  background: ${({ theme }) =>
+    theme === lightTheme ? theme.tertiary : theme.primary};
+  position: absolute;
+  z-index: 1000;
+  right: 0;
+  display: none;
+  ${({ shadeOpen }) => shadeOpen === false && `display: none`};
+`
+
+export const BurgerBokeh = styled.div<HamburgerProps>`
+  width: 100vw;
+  height: 2160px;
+  background: ${({ theme }) => theme.accent};
+  opacity: 0.02;
+  position: absolute;
+  z-index: 999;
+
+  ${({ shadeOpen }) => shadeOpen === false && `display: none`}
+`
+
+export const BurgerNavContainer = styled.div<HamburgerProps>`
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin-top: 40px;
+  margin-right: 16px;
+  z-index: 1004;
+
+  ${({ shadeOpen }) => shadeOpen === false && `display: none`}
+`
+
+export const BurgerNavItem = styled(NavItem)`
+  margin-top: 15px;
+  min-width: 100px;
+  border: none;
+  background-color: ${(props) => props.theme.tertiary};
+  transition: ease-out 0.1s;
+  outline: none;
+  margin-right: 10px;
+  justify-content: center;
+  text-align: center;
+  font-family: Barlow;
+  color: ${(props) => props.theme.btnFontColor};
+  user-select: none;
+  border-radius: 40px;
+  font-size: 18px;
+  ${(props) => props.theme.accent};
+  box-shadow: 0px 0px 2px 1px
+    ${({ theme }) =>
+      theme === lightTheme
+        ? `rgba(0, 0, 0, 0.1)`
+        : ` rgba(255, 255, 255, 0.1)`};
 `
 
 const ThemeToggleButton = styled.div`
@@ -64,12 +169,20 @@ const ThemeToggleButton = styled.div`
   top: 0;
   margin-right: 70px;
   margin-top: 20px;
+  z-index: 1001;
+
+  @media (max-width: 770px) {
+    font-size: 17px;
+    margin-top: 14px;
+    margin-right: 77px;
+    scale: 0.8;
+  }
 `
 
 export const InnerToggle = styled.div`
-  width: 22px;
-  height: 22px;
-  margin: 3px 3px 2px 3px;
+  width: 24px;
+  height: 24px;
+  margin: 2px 2px 2px 2px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.primary};
 
@@ -77,11 +190,16 @@ export const InnerToggle = styled.div`
     theme === lightTheme && `float: right; transition: ease 0.3s; `}
 `
 
-const NavLink = ({ href, name, active }) => (
-  <NextLink href={href} passHref>
-    <NavItem active={active}>{name}</NavItem>
-  </NextLink>
-)
+const NavLink = ({ href, name, active, mobile }) =>
+  mobile ? (
+    <NextLink href={href} passHref>
+      <BurgerNavItem active={active}>{name}</BurgerNavItem>
+    </NextLink>
+  ) : (
+    <NextLink href={href} passHref>
+      <NavItem active={active}>{name}</NavItem>
+    </NextLink>
+  )
 
 const UnifiedNav = styled.div`
   display: flex;
@@ -93,15 +211,15 @@ const UnifiedNav = styled.div`
 `
 
 const DesktopNav = styled(UnifiedNav)`
-  @media (max-width: 660px) {
+  @media (max-width: 770px) {
     display: none;
   }
 `
 const MobileNav = styled(UnifiedNav)`
-  @media (min-width: 660px) {
+  @media (min-width: 770px) {
     display: none;
   }
-  @media (max-width: 660px) {
+  @media (max-width: 770px) {
     margin-top: 10px;
     flex-direction: column;
     margin-bottom: 10px;
@@ -116,7 +234,7 @@ const Logo = styled.div`
   position: absolute;
   left: 0;
   margin-left: 10px;
-  @media (max-width: 660px) {
+  @media (max-width: 770px) {
     margin: 10px;
     position: relative;
   }
