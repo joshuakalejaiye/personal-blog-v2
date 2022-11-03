@@ -30,7 +30,7 @@ const ArticleCard = styled.div<CardProps>`
   }
 
   //for mobile
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     flex-direction: column;
     min-height: 450px;
     text-align: center;
@@ -42,7 +42,7 @@ const Content = styled.div`
   flex-direction: column;
   margin-right: 80px;
   //for mobile
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     flex-direction: column;
     color: ${({ theme }) => theme.fontColor};
     margin-right: 0;
@@ -53,11 +53,11 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.fontColor};
   margin: 8px 12px 4px 10px;
 
-  @media (min-width: 750px) {
+  @media (min-width: 770px) {
     padding-right: 280px;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     padding-right: 0px;
   }
 `
@@ -66,11 +66,11 @@ const Subtitle = styled.p`
   color: ${({ theme }) => theme.light};
   margin-top: 10px;
   padding-bottom: 10px;
-  @media (min-width: 750px) {
+  @media (min-width: 770px) {
     padding-right: 310px;
   }
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     padding-right: 0px;
   }
 `
@@ -88,7 +88,7 @@ const Date = styled.p`
 
   color: ${({ theme }) => theme.fontColor};
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     position: relative;
   }
 `
@@ -100,7 +100,7 @@ const Image = styled.img`
   margin: 0;
   padding: 0;
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     position: relative;
     justify-content: center;
   }

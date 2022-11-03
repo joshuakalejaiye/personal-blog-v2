@@ -8,7 +8,7 @@ export const NextImage = styled(Image)`
   top: 0;
   padding: 0;
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     position: relative;
     justify-content: center;
   }
@@ -39,7 +39,7 @@ export const Caption = styled.div`
   font-style: italic;
   margin-bottom: 20px;
 
-  @media (max-width: 750px) {
+  @media (max-width: 770px) {
     margin-top: -10px;
     margin-bottom: 0px;
   }
