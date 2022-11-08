@@ -138,8 +138,7 @@ export const BurgerNavItem = styled(NavItem)`
   height: 40px;
   scale: 1.7;
   border: none;
-  background-color: ${({ theme }) =>
-    theme === lightTheme ? theme.tertiary : theme.primary};
+  background-color: ${(props) => props.theme.accent};
   transition: ease-out 0.1s;
   outline: none;
   margin-right: auto;
@@ -151,12 +150,12 @@ export const BurgerNavItem = styled(NavItem)`
   user-select: none;
   border-radius: 40px;
   font-size: 18px;
-  ${(props) => props.theme.accent};
-  box-shadow: 0px 0px
-    ${({ theme }) =>
-      theme === lightTheme
-        ? ` 2px 1px rgba(0, 0, 0, 0.1)`
-        : ` 1px 1px ${theme.accent};`};
+  color: ${(props) => props.theme.primary};
+
+  &:hover {
+    background-color: ${(props) => props.theme.accent};
+    color: ${(props) => props.theme.primary};
+  }
 `
 
 const ThemeToggleButton = styled.div`
@@ -173,9 +172,9 @@ const ThemeToggleButton = styled.div`
 
   @media (max-width: 770px) {
     font-size: 17px;
-    margin-top: 14px;
-    margin-right: 77px;
-    scale: 0.8;
+    margin-top: 15px;
+    margin-right: 76px;
+    scale: 0.94;
   }
 `
 
