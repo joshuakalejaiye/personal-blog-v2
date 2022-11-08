@@ -59,11 +59,9 @@ export const GitHubLink = styled(NavItem)`
 
   @media (max-width: 770px) {
     margin: 0;
-    scale: 1;
+    scale: 1.1;
     margin-top: 10px;
-    margin-left: 20px;
-    right: unset;
-    left: 0;
+    margin-right: 145px;
   }
 `
 
@@ -123,27 +121,29 @@ export const BurgerBokeh = styled.div<HamburgerProps>`
 
 export const BurgerNavContainer = styled.div<HamburgerProps>`
   position: absolute;
-  right: 0;
   top: 0;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  margin-top: 40px;
-  margin-right: 16px;
+  margin-top: 13vh;
   z-index: 1004;
 
   ${({ shadeOpen }) => shadeOpen === false && `display: none`}
 `
 
 export const BurgerNavItem = styled(NavItem)`
-  margin-top: 15px;
-  min-width: 100px;
+  margin-top: 50px;
+  min-width: 110px;
+  height: 40px;
+  scale: 1.7;
   border: none;
-  background-color: ${(props) => props.theme.tertiary};
+  background-color: ${({ theme }) =>
+    theme === lightTheme ? theme.tertiary : theme.primary};
   transition: ease-out 0.1s;
   outline: none;
-  margin-right: 10px;
+  margin-right: auto;
+  margin-left: auto;
   justify-content: center;
   text-align: center;
   font-family: Barlow;
@@ -152,11 +152,11 @@ export const BurgerNavItem = styled(NavItem)`
   border-radius: 40px;
   font-size: 18px;
   ${(props) => props.theme.accent};
-  box-shadow: 0px 0px 2px 1px
+  box-shadow: 0px 0px
     ${({ theme }) =>
       theme === lightTheme
-        ? `rgba(0, 0, 0, 0.1)`
-        : ` rgba(255, 255, 255, 0.1)`};
+        ? ` 2px 1px rgba(0, 0, 0, 0.1)`
+        : ` 1px 1px ${theme.accent};`};
 `
 
 const ThemeToggleButton = styled.div`
