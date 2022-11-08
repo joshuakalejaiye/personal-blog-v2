@@ -25,7 +25,7 @@ const Content = styled.div<ContentProps>`
   padding: 100px;
   margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}px;
 
-  ${({ shadeOpen }) => shadeOpen && `filter: blur(4px);`}
+  ${({ shadeOpen }) => shadeOpen && `filter: blur(4px); `}
 
   @media (max-width: 770px) {
     max-width: unset;
