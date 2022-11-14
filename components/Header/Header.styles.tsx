@@ -41,7 +41,7 @@ const NavItem = styled.a<{ active?: boolean }>`
     transition: ease 0.2s;
   }
 `
-export const GitHubLink = styled(NavItem)`
+export const GitHubLink = styled(NavItem)<{ shadeOpen?: boolean }>`
   position: absolute;
   right: 0;
   top: 0;
@@ -58,10 +58,11 @@ export const GitHubLink = styled(NavItem)`
   }
 
   @media (max-width: 770px) {
+    ${({ shadeOpen }) => shadeOpen === false && `display: none`};
     margin: 0;
     scale: 1.1;
     margin-top: 10px;
-    margin-right: 145px;
+    margin-right: 143px;
   }
 `
 
@@ -75,7 +76,7 @@ export const Hamburger = styled.div<HamburgerProps>`
   position: absolute;
   right: 0;
   top: 0;
-  margin-right: 27px;
+  margin-right: 50px;
   margin-top: 14px;
   align-items: center;
   justify-content: center;
@@ -124,7 +125,7 @@ export const Logo = styled.div`
   top: 0;
   left: 0;
   z-index: 1005;
-  margin-left: 28px;
+  margin-left: 50px;
   background-color: ${({ theme }) => theme.accent};
   height: 30px;
   width: 30px;
@@ -197,7 +198,7 @@ const ThemeToggleButton = styled.div`
   @media (max-width: 770px) {
     font-size: 17px;
     margin-top: 15px;
-    margin-right: 76px;
+    margin-right: 87px;
     scale: 0.94;
   }
 `
