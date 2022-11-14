@@ -119,6 +119,30 @@ export const BurgerBokeh = styled.div<HamburgerProps>`
   ${({ shadeOpen }) => shadeOpen === false && `display: none`}
 `
 
+export const Logo = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1005;
+  margin-left: 28px;
+  background-color: ${({ theme }) => theme.accent};
+  height: 30px;
+  width: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15px;
+`
+
+export const LogoText = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.primary};
+  font-size: 17px;
+  align-self: center;
+  margin-top: 4px;
+  font-weight: 800;
+`
+
 export const BurgerNavContainer = styled.div<HamburgerProps>`
   position: absolute;
   top: 0;
@@ -189,14 +213,18 @@ export const InnerToggle = styled.div`
     theme === lightTheme && `float: right; transition: ease 0.3s; `}
 `
 
-const NavLink = ({ href, name, active, mobile }) =>
+const NavLink = ({ href, name, active, mobile, onClick }) =>
   mobile ? (
     <NextLink href={href} passHref>
-      <BurgerNavItem active={active}>{name}</BurgerNavItem>
+      <BurgerNavItem active={active} onClick={onClick}>
+        {name}
+      </BurgerNavItem>
     </NextLink>
   ) : (
     <NextLink href={href} passHref>
-      <NavItem active={active}>{name}</NavItem>
+      <NavItem active={active} onClick={onClick}>
+        {name}
+      </NavItem>
     </NextLink>
   )
 
@@ -225,38 +253,4 @@ const MobileNav = styled(UnifiedNav)`
   }
 `
 
-const Logo = styled.div`
-  background-color: #212121;
-  width: 60px;
-  height: 60px;
-  display: block;
-  position: absolute;
-  left: 0;
-  margin-left: 10px;
-  @media (max-width: 770px) {
-    margin: 10px;
-    position: relative;
-  }
-`
-
-const InnerLogo = styled.div`
-  background-color: white;
-  margin: 20px;
-  width: 30px;
-  height: 50px;
-  display: flex;
-  margin-top: -5px;
-  margin-left: -4px;
-  box-shadow: 0px 0px 1px -1px gray;
-`
-
-export {
-  NavItem,
-  NavBar,
-  Logo,
-  InnerLogo,
-  NavLink,
-  DesktopNav,
-  ThemeToggleButton,
-  MobileNav,
-}
+export { NavItem, NavBar, NavLink, DesktopNav, ThemeToggleButton, MobileNav }

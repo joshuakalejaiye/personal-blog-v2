@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { FC } from "react"
 import { routes } from "../../site-details"
@@ -12,9 +13,10 @@ interface HeaderProps {
 interface NavItemProps {
   route: string
   mobile?: boolean
+  onClick?: () => void
 }
 
-const NavItem: FC<NavItemProps> = ({ route, mobile = false }) => {
+const NavItem: FC<NavItemProps> = ({ route, mobile = false, onClick }) => {
   const { pathname } = useRouter()
 
   if (route === "/") {
@@ -23,6 +25,7 @@ const NavItem: FC<NavItemProps> = ({ route, mobile = false }) => {
       name: "Home",
       active: pathname === route,
       mobile,
+      onClick,
     })
   }
 
@@ -31,6 +34,7 @@ const NavItem: FC<NavItemProps> = ({ route, mobile = false }) => {
     name: route[1].toUpperCase() + route.slice(2),
     active: pathname === route,
     mobile,
+    onClick,
   })
 }
 
@@ -63,9 +67,14 @@ const Header: FC<HeaderProps> = ({ onChangeTheme, shadeOpen, toggleShade }) => (
       </Styled.ThemeToggleButton>
     </Styled.DesktopNav>
     <Styled.MobileNav>
+      <Link href="/" passHref>
+        <Styled.Logo>
+          <Styled.LogoText>JK</Styled.LogoText>
+        </Styled.Logo>
+      </Link>
       <Styled.BurgerNavContainer shadeOpen={shadeOpen}>
         {Object.values(routes).map((route) => (
-          <NavItem key={route} route={route} mobile />
+          <NavItem key={route} route={route} mobile onClick={toggleShade} />
         ))}
       </Styled.BurgerNavContainer>
       <Styled.BurgerShade shadeOpen={shadeOpen} />
