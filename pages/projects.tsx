@@ -8,7 +8,7 @@ import gestureKiosk from "../posts/gesture-kiosk"
 interface ContactProps {}
 
 const StyledTitle = styled.h1`
-  margin-left: 28px;
+  margin-left: 4px;
 `
 
 const StyledContainer = styled.div`
